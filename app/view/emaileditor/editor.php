@@ -8,14 +8,11 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- <link rel="icon" href="../../../../favicon.ico"> -->
 		<title>Advanced Email Editor</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-        <!-- css editor -->
-		<link rel="stylesheet" href="<?= BASE_URL."app/views/editor/css/style_editor.css"; ?>">
-		<!-- <link rel="stylesheet" href="<?= BASE_URL."app/views/editor/css/style_preview.css"; ?>"> -->
-		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/sweetalert/sweetalert.css"; ?>">
-		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/jquery-loading/jquery.loading.css"; ?>">
+		<link rel="stylesheet" href="<?= BASE_URL. "assets/bootstrap/bootstrap.min.css" ?>">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+		<link rel="stylesheet" href="<?= BASE_URL. "assets/sweet-alert2/sweetalert2.min.css" ?>">
+		<link rel="stylesheet" href="<?= BASE_URL. "app/view/emaileditor/css/style.css" ?>">
+		<link rel="stylesheet" href="<?= BASE_URL. "app/view/emaileditor/css/loading.css" ?>">
 
 	</head>
 	<body>
@@ -29,7 +26,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
           			</button>
-					<a class="navbar-brand" href="#"><img alt="Brand" width="80px" height="19.75px" src="<?= BASE_URL."assets/images/citilink-837863_960_720_.png"; ?>"></a>
+					<a class="navbar-brand" href="#"><img alt="Brand" width="96.1px" height="68.2px" src="<?= BASE_URL."assets/img/citilink-logo.png"; ?>"></a>
 					<div class="pull-right">
 					</div>
 					
@@ -41,7 +38,7 @@
 					</ul>
 					<form id="form-editor" class="navbar-form navbar-left" role="form">
 						<div class="form-group">
-							<input id="name_email" type="text" class="form-control" placeholder="Email Name" value="<?= $data['name'] ?>">
+							<input id="name_email" type="text" class="form-control" placeholder="Email Name" value="">
 						</div>
 						<button id="submit" type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Save Email"><i class="fas fa-save"></i></button>
 						<button id="save_as_template" type="button" class="btn btn-default" title="Save as Template"><i class="fas fa-save"></i> Save as Template</button>
@@ -77,5 +74,8 @@
 			<?php include_once('preview.php') ?>
 		</div>
 
+		<script src="<?= BASE_URL. "assets/jquery/jquery-3.4.1.min.js" ?>"></script>
+		<script src="<?= BASE_URL. "assets/bootstrap/bootstrap.min.js" ?>"></script>
+		<script src="<?= BASE_URL. "assets/sweet-alert2/sweetalert2.min.js" ?>"></script>
 	</body>
 </html>

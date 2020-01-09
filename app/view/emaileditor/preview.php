@@ -38,7 +38,7 @@
 
             <!-- header content -->
             <div class="panel-heading" style="padding: 0; height: 65px;">
-                <img src="D:\preview-page\img\mobile-view-top-bar.png" />
+                <img src="<?= BASE_URL. "assets/img/mobile-view-top-bar.png" ?>"/>
             </div>
 
             <!-- body content -->
@@ -48,7 +48,7 @@
 
             <!-- footer content -->
             <div class="panel-footer" style="border-top: 0; padding: 0; height: 44px;">
-                <img src="D:\preview-page\img\mobile-view-bottom-bar.png" />
+                <img src="<?= BASE_URL. "assets/img/mobile-view-bottom-bar.png" ?>"/>
             </div>
             </div>
         </div>
