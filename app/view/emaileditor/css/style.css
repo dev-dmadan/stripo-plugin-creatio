@@ -1,0 +1,122 @@
+/*Navbar header*/
+.back-button {
+  margin-left: 10px;
+  margin-top: -5px;
+}
+
+
+.navbar-form .form-control {
+  display: inline-block;
+  width: 300px;
+  vertical-align: middle;
+}
+
+.form-control {
+  position: relative;
+  margin-left: 100px;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.save-icon {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  border: solid 0.5px rgb(196, 196, 196);
+
+}
+
+/* Phone View*/
+.smartphone {
+  position: absolute;
+  width: 340px;
+  height: 685px;
+  border: 10px #ffffff solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+}
+
+/* The horizontal line on the top of the device */
+.smartphone:before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 40px;
+}
+
+/* lingkaran telpon */
+.smartphone:after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 50%;
+  bottom: -65px;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 50%;
+}
+
+/* The screen (or content) of the device */
+.smartphone .content {
+  width: 320px;
+  height: 450px;
+  background: rgb(24, 24, 24);
+}
+
+/* laptop look */
+/* .laptop .content-2 {
+  width: 2000px;
+  height: 900px;
+  overflow: hidden;
+  border: none;
+} */
+
+/* Laptop View */
+
+.laptop {
+  position: relative;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(.6) translate(-50%);
+  transform: scale(.6) translate(-50%);
+  left: 50%;
+  width: 1318px;
+  height: 800px;
+  border-color: #ffffff;
+  border-radius: 36px 36px 0px 0px;
+  border-width: 24px 24px 80px;
+  background-color: #ffffff;
+}
+
+/* Setup Citilink Logo */
+
+.logo-citilink {
+  position: relative;
+  margin-left: 50px;
+}
+
+
