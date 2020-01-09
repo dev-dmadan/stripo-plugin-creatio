@@ -1,0 +1,14 @@
+{
+    "name": "dev-madan/hello-framework-lite",
+    "description": "Simple framework php lite version",
+    "authors": [
+        {
+            "name": "Romadan Saputra",
+            "email": "dev.rarasta27@gmail.com"
+        }
+    ],
+    "require": {
+        "php-curl-class/php-curl-class": "^8.6",
+        "klein/klein": "^2.1"
+    }
+}
