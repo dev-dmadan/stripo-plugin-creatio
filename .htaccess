@@ -1,8 +1,4 @@
-<IfModule mod_rewrite.c>
-    Options -MultiViews
-
-    RewriteEngine On
-    RewriteBase /my-site/app/
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-</IfModule>
+RewriteEngine On
+RewriteBase /iSystemAsia/stripo-plugin-creatio/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]

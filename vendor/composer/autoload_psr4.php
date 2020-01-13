@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Klein\\' => array($vendorDir . '/klein/klein/src/Klein'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Curl\\' => array($vendorDir . '/php-curl-class/php-curl-class/src/Curl'),
 );

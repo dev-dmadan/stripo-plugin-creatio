@@ -22,5 +22,12 @@ require_once __DIR__ . '/app/configuration/config.php';
 require_once __DIR__ . '/app/core/Controller.core.php';
 require_once __DIR__ . '/app/core/Database.core.php';
 require_once __DIR__ . '/app/core/Auth.core.php';
+
+/** Put Library Here */
+
+require_once __DIR__ . '/app/library/stripo-plugin.php';
+
+/** End Put Library Here */
+
 require_once __DIR__ . '/app/core/Request.core.php';
 require_once __DIR__ . '/app/configuration/route.php';

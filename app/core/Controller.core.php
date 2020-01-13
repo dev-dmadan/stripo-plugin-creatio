@@ -13,36 +13,51 @@ class Controller {
     /**
      * 
      */
-    final protected function model($name) {
-        $class = ucfirst(strtolower($name));
-        require_once ROOT.DS. 'app' .DS. 'model' .DS.$class. 'php';
-        $this->$name = new $class();
+    final protected function model($name, $alias = '') {
+        require_once MODEL.$name. '.php';
+        
+        if(empty($alias)) {
+            $this->$alias = new $name();
+        }
+        else {
+            $this->$name = new $name();
+        }
     }
 
     /**
      * 
      */
-    final protected function view($name) {
+    final protected function view($name, $data = null) {
         $temp = explode('/', $name);
 			
-        $view = '';
+        $viewPath = '';
         for($i=0; $i<count($temp); $i++){
             if((count($temp)-$i!=1)) {
-                $view .= $temp[$i].DS;
+                $viewPath .= $temp[$i].DS;
             }
             else {
-                $view .= $temp[$i];
+                $viewPath .= $temp[$i];
             }
         }
         
-        require_once ROOT.DS. 'app' .DS. 'view' .DS.$view. '.php';
+        ob_start();
+        if(!empty($data)) {
+            foreach($data as $key => $value) {
+                ${$key} = $value;
+            }
+        }
+        require_once ROOT.DS. 'app' .DS. 'view' .DS.$viewPath. '.php';
+        $view = ob_get_contents();
+        ob_end_clean();
+
+        echo $view;
         die();
     }
 
     /**
      * 
      */
-    final public function redirect($url = BASE_URL){
+    final public function redirect($url = SITE_URL){
         header("Location: {$url}");
         die();
     }

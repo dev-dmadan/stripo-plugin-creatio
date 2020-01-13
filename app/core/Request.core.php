@@ -6,12 +6,21 @@ class Request {
     /**
      * 
      */
-    public function call($request = "") {
+    public function call($request = "", $caseSensitive = false) {
         $uri = explode('/', $request);
-        $class = (isset($uri[0]) && (!empty($uri[0]))) ? ucfirst(strtolower($uri[0])) : ucfirst(DEFAULT_CONTROLLER);
-        $method = isset($uri[1]) ? strtolower($uri[1]) : 'index';
 
-        $controller = ROOT.DS. 'app' .DS. 'controller'. DS.ucfirst(strtolower($class)). 'Controller.php';
+        if($caseSensitive) {
+            $class = (isset($uri[0]) && (!empty($uri[0]))) ? $uri[0] : ucfirst(DEFAULT_CONTROLLER);
+            $method = isset($uri[1]) ? $uri[1] : 'index';
+
+            $controller = ROOT.DS. 'app' .DS. 'controller'. DS.$class. 'Controller.php';
+        }
+        else {
+            $class = (isset($uri[0]) && (!empty($uri[0]))) ? ucfirst(strtolower($uri[0])) : ucfirst(DEFAULT_CONTROLLER);
+            $method = isset($uri[1]) ? strtolower($uri[1]) : 'index';
+
+            $controller = ROOT.DS. 'app' .DS. 'controller'. DS.ucfirst(strtolower($class)). 'Controller.php';
+        }
 
         $classExists = $methodExists = false;
         if(file_exists($controller)) {
@@ -26,14 +35,5 @@ class Request {
                 $object->$method();
             }
         }
-
-        // var_dump(array(
-        //     'uri' => $uri,
-        //     'class' => $class,
-        //     'method' => $method,
-        //     'file' => $controller,
-        //     'classExists' => $classExists,
-        //     'methodExists' => $methodExists
-        // ));
     }
 }

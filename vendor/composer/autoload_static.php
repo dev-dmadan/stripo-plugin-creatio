@@ -11,6 +11,10 @@ class ComposerStaticInitc8af9dde1b1d61de19be3fd03a064734
         array (
             'Klein\\' => 6,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'C' => 
         array (
             'Curl\\' => 5,
@@ -21,6 +25,10 @@ class ComposerStaticInitc8af9dde1b1d61de19be3fd03a064734
         'Klein\\' => 
         array (
             0 => __DIR__ . '/..' . '/klein/klein/src/Klein',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Curl\\' => 
         array (

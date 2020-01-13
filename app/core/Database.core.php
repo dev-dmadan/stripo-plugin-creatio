@@ -3,18 +3,14 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
 
 class Database {
 
-    public $connection;
-
-    public function __construct() {
-        $this->open();
-    }
+    private $connection;
 
     /**
      * 
      */
-    private function open() {
+    public function open() {
         try {
-            $this->connection = new PDO("mysql:host={DB_HOST};dbname={DB_NAME}", DB_USERNAME, DB_PASSWORD);
+            $this->connection = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USERNAME, DB_PASSWORD);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $e) {
@@ -24,6 +20,8 @@ class Database {
                 'error' => $e->getMessage()
             )));
         }
+
+        return $this->connection;
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php ?>
 
-<div class="preview-email">
+<div class="preview-email" style="display: none">
         <!-- Header -->
         <div class="panel panel-default">
     <div class="panel-body">
@@ -24,7 +24,7 @@
 
             <!-- body content -->
             <div class="panel-body" style="height: 850px;">
-                <iframe src="https://i-systemasia.com/" style="width:100%;border:none;height:100%"></iframe>
+                <iframe src="" style="width:100%;border:none;height:100%"></iframe>
             </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
 
             <!-- body content -->
             <div class="panel-body" style="padding: 0; height: 460px;">
-                <iframe src="https://i-systemasia.com/" style="width:100%;border:none;height:100%"></iframe>
+                <iframe src="" style="width:100%;border:none;height:100%"></iframe>
             </div>
 
             <!-- footer content -->

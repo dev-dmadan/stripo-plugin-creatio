@@ -1,6 +1,13 @@
 <?php
 Defined('BASE_PATH') or die(ACCESS_DENIED);
 
+/** USE THIS CODE IF YOUR PROJECT IN SUBDIRECTORY  */
+    $base  = dirname($_SERVER['PHP_SELF']);
+    if(ltrim($base, '/')) { 
+        $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], strlen($base));
+    }
+/** USE THIS CODE IF YOUR PROJECT IN SUBDIRECTORY */
+
 $controller = new Request();
 $route = new \Klein\Klein();
 
@@ -11,8 +18,19 @@ $route = new \Klein\Klein();
 
 /** Your custom route */
 
+    // editor
     $route->respond('GET', '/', function() use ($controller) {
         $controller->call();
+    });
+    
+    // get token stripo
+    $route->respond('POST', '/get-token-stripo', function() use ($controller) {
+        $controller->call('Home/getTokenStripo', true);
+    });
+
+    // get auth to creatio
+    $route->respond('POST', '/get-auth', function() use ($controller) {
+        $controller->call('GetAuthCreatio/index', true);
     });
 
     /** Login */
