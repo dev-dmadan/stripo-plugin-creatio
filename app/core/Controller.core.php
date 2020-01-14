@@ -27,7 +27,7 @@ class Controller {
     /**
      * 
      */
-    final protected function view($name, $data = null) {
+    final public function view($name, $data = null) {
         $temp = explode('/', $name);
 			
         $viewPath = '';

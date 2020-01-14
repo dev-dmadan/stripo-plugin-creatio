@@ -19,8 +19,7 @@ class Home extends Controller {
      */
     public function index() {
         $data = array();
-        phpinfo();
-        // $this->view('emaileditor/editor', $data);
+        $this->view('emaileditor/editor', $data);
     }
 
     /**

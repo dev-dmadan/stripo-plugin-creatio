@@ -36,4 +36,31 @@ class Request {
             }
         }
     }
+
+    /**
+     * 
+     */
+    public function error($errorCode = 404) {
+        $controller = new Controller();
+
+        $message = '';
+        switch ($errorCode) {
+            case 405:
+                $message = '';
+                break;
+            case 500:
+                $message = '';
+                break;
+            case 404:
+            default:
+                $message = '';
+                break;
+        }
+
+        $data = array(
+            'error' => $errorCode,
+            'message' => $message
+        );
+        $controller->view('error/'. $errorCode, $data);
+    }
 }

@@ -19,6 +19,9 @@ switch (ENVIRONMET) {
         define('DEFAULT_CONTROLLER', 'home');
 
         define('TOKEN_AUTH_CREATIO', '2a4a215c0f46c9fd8895e0840b0498ac');
+        define('BASE_URL_CREATIO', '');
+        define('USERNAME_CREATIO', '');
+        define('PASSWORD_CREATIO', '');
 
         /**
          * Configuration Database
@@ -46,6 +49,9 @@ switch (ENVIRONMET) {
         define('DEFAULT_CONTROLLER', 'home');
 
         define('TOKEN_AUTH_CREATIO', '2a4a215c0f46c9fd8895e0840b0498ac');
+        define('BASE_URL_CREATIO', '');
+        define('USERNAME_CREATIO', '');
+        define('PASSWORD_CREATIO', '');
 
         /**
          * Configuration Database
@@ -74,6 +80,9 @@ switch (ENVIRONMET) {
         define('DEFAULT_CONTROLLER', 'home');
 
         define('TOKEN_AUTH_CREATIO', '2a4a215c0f46c9fd8895e0840b0498ac');
+        define('BASE_URL_CREATIO', '');
+        define('USERNAME_CREATIO', '');
+        define('PASSWORD_CREATIO', '');
 
         /**
          * Configuration Database
