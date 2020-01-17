@@ -1,4 +1,15 @@
-<?php Defined('BASE_PATH') or die(ACCESS_DENIED); ?>
+<?php 
+Defined('BASE_PATH') or die(ACCESS_DENIED); 
+
+var_dump(array(
+    'emailId' => $emailId,
+    'templateId' => $templateId,
+    'templateName' => $templateName,
+    'macro' => $macro,
+    'action' => $action
+));
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +57,7 @@
                         </ul>
                         <form id="form-editor" class="navbar-form navbar-left" role="form">
                             <div class="form-group">
-                                <input id="name_email" type="text" class="form-control" placeholder="Email Name" value="">
+                                <input id="templateName" type="text" class="form-control" placeholder="Template Name" value="<?= $templateName ?>">
                             </div>
                             <button id="save" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Save Email"><i class="fas fa-save"></i></button>
                             <button id="saveAsTemplate" type="button" class="btn btn-default" title="Save as Template"><i class="fas fa-save"></i> Save as Template</button>

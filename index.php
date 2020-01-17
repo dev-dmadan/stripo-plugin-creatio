@@ -26,6 +26,7 @@ require_once __DIR__ . '/app/core/Auth.core.php';
 /** Put Library Here */
 
 require_once __DIR__ . '/app/library/stripo-plugin.php';
+require_once __DIR__ . '/app/library/request-service-creatio/request-creatio.php';
 
 /** End Put Library Here */
 

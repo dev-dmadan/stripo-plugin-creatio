@@ -27,7 +27,7 @@ class Controller {
     /**
      * 
      */
-    final public function view($name, $data = null) {
+    final public function view($name, $data = null, $return = false) {
         $temp = explode('/', $name);
 			
         $viewPath = '';
@@ -49,6 +49,10 @@ class Controller {
         require_once ROOT.DS. 'app' .DS. 'view' .DS.$viewPath. '.php';
         $view = ob_get_contents();
         ob_end_clean();
+
+        if($return) {
+            return $view;
+        }
 
         echo $view;
         die();

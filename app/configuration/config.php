@@ -18,7 +18,7 @@ switch (ENVIRONMET) {
          */
         define('DEFAULT_CONTROLLER', 'home');
 
-        define('TOKEN_AUTH_CREATIO', '2a4a215c0f46c9fd8895e0840b0498ac');
+        define('KEY_AUTH', '2a4a215c0f46c9fd8895e0840b0498ac');
         define('BASE_URL_CREATIO', '');
         define('USERNAME_CREATIO', '');
         define('PASSWORD_CREATIO', '');
@@ -48,7 +48,7 @@ switch (ENVIRONMET) {
          */
         define('DEFAULT_CONTROLLER', 'home');
 
-        define('TOKEN_AUTH_CREATIO', '2a4a215c0f46c9fd8895e0840b0498ac');
+        define('KEY_AUTH', '2a4a215c0f46c9fd8895e0840b0498ac');
         define('BASE_URL_CREATIO', '');
         define('USERNAME_CREATIO', '');
         define('PASSWORD_CREATIO', '');
@@ -79,10 +79,10 @@ switch (ENVIRONMET) {
          */
         define('DEFAULT_CONTROLLER', 'home');
 
-        define('TOKEN_AUTH_CREATIO', '2a4a215c0f46c9fd8895e0840b0498ac');
-        define('BASE_URL_CREATIO', '');
-        define('USERNAME_CREATIO', '');
-        define('PASSWORD_CREATIO', '');
+        define('KEY_AUTH', '2a4a215c0f46c9fd8895e0840b0498ac');
+        define('BASE_URL_CREATIO', 'http://localhost:8083');
+        define('USERNAME_CREATIO', 'Supervisor');
+        define('PASSWORD_CREATIO', 'Supervisor');
 
         /**
          * Configuration Database

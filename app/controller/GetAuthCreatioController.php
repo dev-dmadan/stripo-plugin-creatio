@@ -2,7 +2,7 @@
 
 use \Firebase\JWT\JWT;
 
-class GetAuthCreatio {
+class GetAuthCreatio extends Controller {
 
     private $token;
     private $success;
@@ -10,7 +10,7 @@ class GetAuthCreatio {
     private $data;
 
     public function __construct() {
-        // $this->model('AuthCreatio');
+        $this->model('AuthCreatioModel', 'AuthCreatio');
     }
 
     /**
@@ -71,33 +71,41 @@ class GetAuthCreatio {
         $source = array(
             'https://citilink.bpmonline.com', 'https://citilinksales.bpmonline.com', 'https://citilinkmarketing.bpmonline.com',
             'http://citilink.bpmonline.com', 'http://citilinksales.bpmonline.com', 'http://citilinkmarketing.bpmonline.com',
+            'https://dev-citilink.bpmonline.com', 'https://dev-citilinksales.bpmonline.com', 'https://dev-citilinkmarketing.bpmonline.com',
+            'http://dev-citilink.bpmonline.com', 'http://dev-citilinksales.bpmonline.com', 'http://dev-citilinkmarketing.bpmonline.com',
             'https://citilink.creatio.com', 'https://citilinksales.creatio.com', 'https://citilinkmarketing.creatio.com',
             'http://citilink.creatio.com', 'http://citilinksales.creatio.com', 'https//citilinkmarketing.creatio.com',
+            'https://dev-citilink.creatio.com', 'https://dev-citilinksales.creatio.com', 'https://dev-citilinkmarketing.creatio.com',
+            'http://dev-citilink.creatio.com', 'http://dev-citilinksales.creatio.com', 'https//dev-citilinkmarketing.creatio.com',
         );
         $check = true;
-
+        $message = '';
         if(!empty($this->data)) {
             if(!isset($this->data->token) || empty($this->data->token)) {
-                $result['message'] .= 'Token is required.';
+                $message .= 'Token is required.';
                 $check = false;
             }
  
             if(!isset($this->data->username) || empty($this->data->username)) {
-                $result['message'] .= ' Username is required.';
+                $message .= ' Username is required.';
                 $check = false;
             }
 
             if(!isset($this->data->source) || empty($this->data->source)) {
-                $result['message'] .= ' Source is required.';
+                $message .= ' Source is required.';
                 $check = false;
             }
             else if(!in_array($this->data->source, $source)) {
-                $result['message'] .= ' Source is incorrect.';
+                $message .= ' Source is incorrect.';
                 $check = false;
             }
         }
+        else {
+            $check = false;
+            $message = 'Please check required parameter.';
+        }
 
-        $result['message'] = trim($result['message']);
+        $result['message'] = trim($message);
         $result['success'] = $check;
 
         return $result;
@@ -129,7 +137,7 @@ class GetAuthCreatio {
             "iss" => "https://citilink.bpmonline.asia/email-editor",
             "aud" => $source,
             "iat" => time(),
-            "nbf" => time() + 10,
+            "nbf" => time() + 5,
             "exp" => time() + 3600,
             "data" => array(
                 "username" => $username,
@@ -137,7 +145,7 @@ class GetAuthCreatio {
             )
         );
 
-        $jwt = JWT::encode($payload, TOKEN_AUTH_CREATIO);
+        $jwt = JWT::encode($payload, KEY_AUTH);
 
         return $jwt;
     }
@@ -146,7 +154,7 @@ class GetAuthCreatio {
      * 
      */
     public function verifyJWTToken() {
-        $authHeader = empty($_SERVER['HTTP_AUTHORIZATION']) ? (isset($_GET['auth']) ? $_GET['auth'] : false) : $_SERVER['HTTP_AUTHORIZATION'];
+        $authHeader = empty($_SERVER['HTTP_AUTHORIZATION']) ? (isset($_GET['access_key']) ? $_GET['access_key'] : false) : $_SERVER['HTTP_AUTHORIZATION'];
         if(!$authHeader) {
             header("Content-Type: application/json");
             header("Accept: application/json");
@@ -158,7 +166,7 @@ class GetAuthCreatio {
             die();
         }
         
-        if(isset($_GET['auth'])) {
+        if(isset($_GET['access_key'])) {
             $JWT = $authHeader;
         }
         else {
@@ -171,7 +179,7 @@ class GetAuthCreatio {
         }
 
         try {
-            $decoded = JWT::decode($JWT, TOKEN_AUTH_CREATIO, array('HS256'));
+            $decoded = JWT::decode($JWT, KEY_AUTH, array('HS256'));
         }
         catch(Exception $e) {
             header("Content-Type: application/json");
@@ -179,8 +187,7 @@ class GetAuthCreatio {
             http_response_code(401);
             echo json_encode(array(
                 'success' => false,
-                'message' => 'Access Denied',
-                'error' => $e->getMessage()
+                'message' => 'Access Denied: '.$e->getMessage(),
             ), JSON_PRETTY_PRINT);
             die();
         }

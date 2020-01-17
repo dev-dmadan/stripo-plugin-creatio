@@ -18,19 +18,27 @@ $route = new \Klein\Klein();
 
 /** Your custom route */
 
-    // editor
+    // editor add
     $route->respond('GET', '/', function() use ($controller) {
+        $controller->call();
+    });
+    $route->respond('GET', '/add', function() use ($controller) {
         $controller->call();
     });
     
     // get token stripo
     $route->respond('POST', '/get-token-stripo', function() use ($controller) {
-        $controller->call('Home/getTokenStripo', true);
+        $controller->call('Home/getTokenStripo', null, true);
+    });
+
+    // get html full
+    $route->respond('POST', '/get-html-full', function() use ($controller) {
+        $controller->call('Home/getHtmlFull', null, true);
     });
 
     // get auth to creatio
     $route->respond('POST', '/get-auth', function() use ($controller) {
-        $controller->call('GetAuthCreatio/index', true);
+        $controller->call('GetAuthCreatio/index', null, true);
     });
 
     /** Error Request */
@@ -40,10 +48,7 @@ $route = new \Klein\Klein();
                 $router->response()->body($controller->error(404));
                 break;
             case 405:
-                $router->response()->body($controller->error(404));
-                break;
-            case 500:
-                $router->response()->body($controller->error(500));
+                $router->response()->body($controller->error(405));
                 break;
             default:
                 $router->response()->body($controller->error());
