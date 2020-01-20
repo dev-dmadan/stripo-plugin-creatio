@@ -34,6 +34,7 @@ class Home extends Controller {
         $templateName = isset($_GET['name']) && !empty($_GET['name']) ? $_GET['name'] : false;
         $macro = isset($_GET['macro']) && !empty($_GET['macro']) ? $_GET['macro'] : false;
         $action = isset($_GET['action']) && !empty($_GET['action']) ? $_GET['action'] : false;
+        $access_key = isset($_GET['access_key']) && !empty($_GET['access_key']) ? $_GET['access_key'] : false;
 
         if($templateId && ($action && strtolower($action) == 'add')) {
             $this->editorAdd($templateId, $emailId);
@@ -48,6 +49,7 @@ class Home extends Controller {
         }
 
         $data = array(
+            'access_key' => $access_key ?? '',
             'emailId' => $emailId ?? '',
             'templateId' => $templateId ?? '',
             'templateName' => $templateName ?? '',
@@ -60,21 +62,7 @@ class Home extends Controller {
     /**
      * 
      */
-    public function add() {
-
-    }
-
-    /**
-     * 
-     */
-    public function edit() {
-        
-    }
-
-    /**
-     * 
-     */
-    private function editorAdd($templateId, $emailId) {
+    private function editorAdd($templateId) {
         // generate emailId dan update emailId ke bpm
 
         // save local
@@ -84,7 +72,7 @@ class Home extends Controller {
     /**
      * 
      */
-    private function editorEdit($templateId) {
+    private function editorEdit($templateId, $emailId) {
         // get html stripo, dan css stripo based on id
 
         // update local
@@ -101,17 +89,10 @@ class Home extends Controller {
         header("Access-Control-Allow-Methods: POST");
 
         $tokenStripo = '';
-        if(isset($_SESSION['TOKEN_STRIPO']) && !empty($_SESSION['TOKEN_STRIPO'])) {
-            $tokenStripo = $_SESSION['TOKEN_STRIPO'];
-        }
-        else {
-            $getPluginStripo = $this->getPluginStripo();
-            $tokenStripo = $this->stripo->getToken($getPluginStripo['pluginId'], $getPluginStripo['secretKey']);
-            if(empty($tokenStripo)) {
-                $this->requestError(400, 'Get Token Stripo is failed. Please try again');
-            }
-
-            $_SESSION['TOKEN_STRIPO'] = $tokenStripo;
+        $getPluginStripo = $this->getPluginStripo();
+        $tokenStripo = $this->stripo->getToken($getPluginStripo['pluginId'], $getPluginStripo['secretKey']);
+        if(empty($tokenStripo)) {
+            $this->requestError(400, 'Get Token Stripo is failed. Please try again');
         }
 
         http_response_code(200);
@@ -191,13 +172,22 @@ class Home extends Controller {
     /**
      * 
      */
-    private function requestError($errorCode, $message) {
+    private function requestError($errorCode, $message, $json = true) {
         http_response_code($errorCode);
-        echo json_encode(array(
-            'success' => false,
-            'message' => $message
-        ), JSON_PRETTY_PRINT);
+        if($json) {
+            header("Content-Type: application/json");
+            header("Accept: application/json");
+            echo json_encode(array(
+                'success' => false,
+                'message' => $message
+            ), JSON_PRETTY_PRINT);
 
-        die();
+            die();
+        }
+        
+        $this->view('error/error', array(
+            'error' => $errorCode,
+            'message' => $message
+        ));
     }
 }

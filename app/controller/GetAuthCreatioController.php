@@ -138,7 +138,7 @@ class GetAuthCreatio extends Controller {
             "aud" => $source,
             "iat" => time(),
             "nbf" => time() + 5,
-            "exp" => time() + 3600,
+            "exp" => time() + 36000,
             "data" => array(
                 "username" => $username,
                 "source" => $source

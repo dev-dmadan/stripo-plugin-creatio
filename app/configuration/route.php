@@ -18,17 +18,19 @@ $route = new \Klein\Klein();
 
 /** Your custom route */
 
-    // editor add
+    // editor add atau edit
     $route->respond('GET', '/', function() use ($controller) {
-        $controller->call();
-    });
-    $route->respond('GET', '/add', function() use ($controller) {
         $controller->call();
     });
     
     // get token stripo
     $route->respond('POST', '/get-token-stripo', function() use ($controller) {
         $controller->call('Home/getTokenStripo', null, true);
+    });
+
+    // save template
+    $route->respond('POST', '/save', function() use ($controller) {
+        $controller->call('home/save', null);
     });
 
     // get html full

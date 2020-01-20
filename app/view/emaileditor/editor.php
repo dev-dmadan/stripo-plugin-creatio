@@ -1,13 +1,14 @@
 <?php 
 Defined('BASE_PATH') or die(ACCESS_DENIED); 
 
-var_dump(array(
-    'emailId' => $emailId,
-    'templateId' => $templateId,
-    'templateName' => $templateName,
-    'macro' => $macro,
-    'action' => $action
-));
+// var_dump(array(
+//     'emailId' => $emailId,
+//     'templateId' => $templateId,
+//     'templateName' => $templateName,
+//     'macro' => $macro,
+//     'action' => $action,
+//     'access_key' => $access_key
+// ));
 
 ?>
 
@@ -34,7 +35,8 @@ var_dump(array(
         </div>
 
         <div id="main-editor">
-
+            <input type="hidden" id="access_key" value="<?=$access_key?>">
+            <input type="hidden" id="action" value="<?=$action?>">
             <!-- navbar -->
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
@@ -93,6 +95,11 @@ var_dump(array(
         </div>
 
         <?php include_once('preview.php') ?>
+
+        <script>
+            const BASE_URL = "<?php echo BASE_URL ?>";
+            const SITE_URL = "<?php echo SITE_URL ?>";
+        </script>
 
         <!-- assets js -->
 		<script src="<?= ASSETS. "jquery/jquery-3.4.1.min.js" ?>"></script>

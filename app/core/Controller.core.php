@@ -16,7 +16,7 @@ class Controller {
     final protected function model($name, $alias = '') {
         require_once MODEL.$name. '.php';
         
-        if(empty($alias)) {
+        if(!empty($alias)) {
             $this->$alias = new $name();
         }
         else {
