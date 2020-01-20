@@ -24,7 +24,8 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 		<link rel="stylesheet" href="<?= ASSETS. "sweet-alert2/sweetalert2.min.css" ?>">
 		<link rel="stylesheet" href="<?= BASE_URL. "app/view/emaileditor/css/style.css" ?>">
-		<link rel="stylesheet" href="<?= BASE_URL. "app/view/emaileditor/css/loading.css" ?>">
+        <link rel="stylesheet" href="<?= BASE_URL. "app/view/emaileditor/css/loading.css" ?>">
+        <link rel="stylesheet" href="<?= ASSETS. "animate/animate.css" ?>">
 
 	</head>
 	<body>
@@ -37,6 +38,8 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
         <div id="main-editor">
             <input type="hidden" id="access_key" value="<?=$access_key?>">
             <input type="hidden" id="action" value="<?=$action?>">
+            <input type="hidden" id="templateId" value="<?=$templateId?>">
+            <input type="hidden" id="emailId" value="<?=$emailId?>">
             <!-- navbar -->
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">

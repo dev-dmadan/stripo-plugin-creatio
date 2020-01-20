@@ -66,7 +66,7 @@ class Home extends Controller {
         // generate emailId dan update emailId ke bpm
 
         // save local
-        echo 'Editor Add';
+        // echo 'Editor Add';
     }
 
     /**

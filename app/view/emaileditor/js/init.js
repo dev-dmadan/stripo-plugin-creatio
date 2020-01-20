@@ -4,6 +4,7 @@ const templateId = document.getElementById('templateId').value;
 const save = document.getElementById('save');
 const saveAsTemplate = document.getElementById('saveAsTemplate');
 const preview = document.getElementById('preview');
+const backPreview = document.getElementById('back-preview');
 
 let emailId = document.getElementById('emailId').value;
 
@@ -19,6 +20,7 @@ window.onload = () => {
         save.addEventListener('click', onClickSave);
         preview.addEventListener('click', onClickPreview);
         saveAsTemplate.addEventListener('click', onClickSaveAsTemplate);
+        backPreview.addEventListener('click', onClickBackPreview);
     /** end on click button */
 
     // fetch('https://plugins.stripo.email/api/v1/auth', {
@@ -250,7 +252,6 @@ function onClickSave() {
 function onClickSaveAsTemplate() {
     console.log('%c Button save as template is clicked...', 'color: blue');
 
-
 }
 
 /**
@@ -258,8 +259,67 @@ function onClickSaveAsTemplate() {
  */
 function onClickPreview() {
     console.log('%c Button preview is clicked...', 'color: blue');
-
     loading();
+
+    animateCSS('#main-editor', 'fadeOut', function() {
+        document.querySelector('#main-editor').style.display = 'none';
+        document.querySelector('.preview-email').style.display = 'block';
+        animateCSS('.preview-email', 'fadeIn', function() {
+            // hide loading
+            loading(false);
+        });
+    });
+
+    // let mainEditor =  document.querySelector('#main-editor');
+    // let previewEmail =  document.querySelector('.preview-email');
+    // mainEditor.classList.add('animated', 'fadeOut');
+
+    // mainEditor.addEventListener('animationend', function() { 
+    //     // hide email editor
+    //     mainEditor.style.display = 'none';
+    //     // hapus si animasi
+    //     mainEditor.classList.remove('animated', 'fadeOut');
+
+    //     // // preview email
+    //     previewEmail.style.display = 'block';
+    //     previewEmail.classList.add('animated', 'fadeIn');
+    //     previewEmail.addEventListener('animationend', function() {
+    //         // hapus si animasi
+    //         previewEmail.classList.remove('animated', 'fadeIn');
+    //     });
+    // });
+}
+
+/**
+ * 
+ */
+function onClickBackPreview() {
+    console.log('%c Back Button is clicked...', 'color: blue');
+    loading();
+
+    animateCSS('.preview-email', 'slideOutLeft', function() {
+        document.querySelector('.preview-email').style.display = 'none';
+        document.querySelector('#main-editor').style.display = 'block';
+        // hide loading
+        loading(false);
+    });
+}
+
+/**
+ * 
+ */
+function animateCSS(element, animation, callback) {
+    let el =  document.querySelector(element);
+    el.classList.add('animated', animation);
+
+    function handleAnimationEnd() {
+        el.classList.remove('animated', animation);
+        el.removeEventListener('animationend', handleAnimationEnd);
+
+        if (typeof callback === 'function') callback();
+    }
+
+    el.addEventListener('animationend', handleAnimationEnd);
 }
 
 /**

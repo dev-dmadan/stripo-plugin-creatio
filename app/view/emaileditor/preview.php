@@ -1,10 +1,10 @@
 <?php ?>
 
-<div class="preview-email" style="display: none">
+<div class="preview-email" style="display: none; background-color: #F5F5F5;" >
         <!-- Header -->
         <div class="panel panel-default">
     <div class="panel-body">
-        <button class="btn btn-default" style="border-radius: 32px;"><i class="fas fa-arrow-left"></i></button>
+        <button id="back-preview" class="btn btn-default" style="border-radius: 32px;"><i class="fas fa-arrow-left"></i></button>
         <button class="btn btn-default" style="margin-left: 10px; border-radius: 32px;"><i class="fas fa-paper-plane"></i> <strong>Test Email</strong></button>
     </div>
     </div>
