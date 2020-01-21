@@ -12,7 +12,7 @@ class Home extends Controller {
         $authCreatio->verifyJWTToken();
 
         $this->stripo = new Stripo();
-        $this->model('StripoModel');
+        $this->model('EmailModel');
 
         $this->creatio = new RequestCreatio(BASE_URL_CREATIO, USERNAME_CREATIO, PASSWORD_CREATIO);
 

@@ -40,6 +40,7 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
             <input type="hidden" id="action" value="<?=$action?>">
             <input type="hidden" id="templateId" value="<?=$templateId?>">
             <input type="hidden" id="emailId" value="<?=$emailId?>">
+            
             <!-- navbar -->
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
