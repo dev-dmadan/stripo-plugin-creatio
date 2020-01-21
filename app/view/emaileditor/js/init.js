@@ -57,28 +57,6 @@ window.onload = () => {
 /**
  * 
  */
-function init() {
-    if(action.toLowerCase() == 'add') {
-        add();
-    }
-    else if(action.toLowerCase() == 'edit') {
-        edit();
-    }
-    else {
-        // tampilkan pesan error
-    }
-}
-
-/**
- * 
- */
-function add() {
-
-}
-
-/**
- * 
- */
 function iniStripo(template, id) {
     window.Stripo.init({
         settingsId: 'stripoSettingsContainer',
@@ -100,7 +78,25 @@ function iniStripo(template, id) {
                 callback(result);
             });
         }
-     });
+    });
+}
+
+function compileEmailStripo(callback, minimize = true) {
+    window.StripoApi.compileEmail((error, html, ampHtml, ampErrors) => {
+        callback({
+            error: error, 
+            html: html, 
+            ampHtml: ampHtml, 
+            ampErrors: ampErrors
+        });
+
+        console.log({
+            error: error, 
+            html: html, 
+            ampHtml: ampHtml, 
+            ampErrors: ampErrors
+        });
+    }, minimize);
 }
 
 /**
@@ -263,10 +259,20 @@ function onClickPreview() {
 
     animateCSS('#main-editor', 'fadeOut', function() {
         document.querySelector('#main-editor').style.display = 'none';
-        document.querySelector('.preview-email').style.display = 'block';
-        animateCSS('.preview-email', 'fadeIn', function() {
-            // hide loading
-            loading(false);
+
+        // get full html+css
+        compileEmailStripo((response) => {
+            document.querySelector('.preview-email').style.display = 'block';
+
+            animateCSS('.preview-email', 'fadeIn', function() {
+                let frameDekstop = document.querySelector('#frameDekstop');
+                let frameSmartphone = document.querySelector('#frameSmartphone');
+                frameDekstop.srcdoc = response.html;
+                frameSmartphone.srcdoc = response.html;
+                
+                // hide loading
+                loading(false);
+            });
         });
     });
 

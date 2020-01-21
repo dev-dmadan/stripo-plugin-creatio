@@ -5,6 +5,8 @@ class Home extends Controller {
 
     private $stripo;
     private $creatio;
+    private $pluginId;
+    private $secretKey;
 
     public function __construct() {
         require_once CONTROLLER. 'GetAuthCreatioController.php';
@@ -16,13 +18,9 @@ class Home extends Controller {
 
         $this->creatio = new RequestCreatio(BASE_URL_CREATIO, USERNAME_CREATIO, PASSWORD_CREATIO);
 
-        if(!isset($_SESSION['TOKEN_STRIPO']) || empty($_SESSION['TOKEN_STRIPO'])) {
-            $getPluginStripo = $this->getPluginStripo();
-            $tokenStripo = $this->stripo->getToken($getPluginStripo['pluginId'], $getPluginStripo['secretKey']);
-            if(!empty($tokenStripo)) {
-                $_SESSION['TOKEN_STRIPO'] = $tokenStripo;
-            }
-        }
+        $getPluginStripo = $this->getPluginStripo();
+        $this->pluginId = $getPluginStripo['pluginId'];
+        $this->secretKey = $getPluginStripo['secretKey'];
     }
 
     /**
@@ -89,8 +87,7 @@ class Home extends Controller {
         header("Access-Control-Allow-Methods: POST");
 
         $tokenStripo = '';
-        $getPluginStripo = $this->getPluginStripo();
-        $tokenStripo = $this->stripo->getToken($getPluginStripo['pluginId'], $getPluginStripo['secretKey']);
+        $tokenStripo = $this->stripo->getToken($this->pluginId, $this->secretKey);
         if(empty($tokenStripo)) {
             $this->requestError(400, 'Get Token Stripo is failed. Please try again');
         }
@@ -131,7 +128,7 @@ class Home extends Controller {
         $check = true;
         $i = 0;
         
-        $token = (isset($_SESSION['TOKEN_STRIPO']) && !empty($_SESSION['TOKEN_STRIPO'])) ? $_SESSION['TOKEN_STRIPO'] : $this->stripo->getToken($getPluginStripo['pluginId'], $getPluginStripo['secretKey']);
+        $token = $this->stripo->getToken($this->pluginId, $this->secretKey);
         while($i < 3) {
             $htmlFull = $this->stripo->getHtmlFull($token, $html, $css, $minimize);
             if(empty($htmlFull)) {
@@ -142,8 +139,7 @@ class Home extends Controller {
             }
 
             if(!$check) {
-                $token = $this->stripo->getToken($getPluginStripo['pluginId'], $getPluginStripo['secretKey']);
-                $_SESSION['TOKEN_STRIPO'] = $token;
+                $token = $this->stripo->getToken($this->pluginId, $this->secretKey);
             }
 
             $i++;

@@ -24,7 +24,7 @@
 
             <!-- body content -->
             <div class="panel-body" style="height: 850px;">
-                <iframe src="" style="width:100%;border:none;height:100%"></iframe>
+                <iframe id="frameDekstop" src="" style="width:100%;border:none;height:100%"></iframe>
             </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
 
             <!-- body content -->
             <div class="panel-body" style="padding: 0; height: 460px;">
-                <iframe src="" style="width:100%;border:none;height:100%"></iframe>
+                <iframe id="frameSmartphone" src="" style="width:100%;border:none;height:100%"></iframe>
             </div>
 
             <!-- footer content -->

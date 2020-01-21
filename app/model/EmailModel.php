@@ -44,6 +44,13 @@ class EmailModel extends Database {
 
     }
     
+    /**
+     * 
+     */
+    public function generateId() {
+        
+    }
+
     public function __destruct() {
         $this->close();
     }
