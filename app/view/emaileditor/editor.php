@@ -41,7 +41,7 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
             <input type="hidden" id="templateId" value="<?=$templateId?>">
             <input type="hidden" id="emailId" value="<?=$emailId?>">
             <!-- navbar -->
-            <nav class="navbar navbar-default navbar-fixed-top">
+            <nav class="navbar navbar-default navbar-top">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -50,7 +50,7 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img alt="Brand" width="96.1px" height="68.2px" src="<?= ASSETS."img/citilink-logo.png"; ?>"></a>
+                        <a class="navbar-brand" href="#"><img class="logo-citilink" alt="Brand" width="96.1px" height="30.1px" src="<?= ASSETS."img/citilink-logo.png"; ?>"></a>
                         <div class="pull-right">
                         </div>
                         
@@ -58,7 +58,7 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
                 
                     <div id="navbar" class="navbar-collapse collapse">
                         <!-- panel 1 -->
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav ">
                         </ul>
                         <form id="form-editor" class="navbar-form navbar-left" role="form">
                             <div class="form-group">
@@ -69,7 +69,7 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
                         </form>
 
                         <!-- panel 2 -->
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right ">
                             <div class="btn-group">
                                 <button id="undoButton" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Undo"><i class="fas fa-undo"></i></button>
                                 <button id="redoButton" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Redo"><i class="fas fa-redo"></i></button>
@@ -87,7 +87,7 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
 
                 <!-- Container Plugin -->
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-md-4 col-sm-6 col-xs-12">
                         <div id="stripoSettingsContainer"></div>
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">

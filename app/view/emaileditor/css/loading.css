@@ -78,7 +78,7 @@
     }
 
     .show-loading {
-        background-color : black;
+        /* background-color : black; */
         opacity : 0.6;
         cursor: wait;
         position : absolute;

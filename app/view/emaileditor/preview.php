@@ -19,7 +19,7 @@
             <div class="panel panel-default">
             <!-- header content -->
             <div class="panel-heading">
-                <img src="<?= BASE_URL. "assets/img/citilink-logo.png" ?>" style="width: 72px; height: 48px;" />
+                <img  src="<?= BASE_URL. "assets/img/citilink-logo.png" ?>" style="width: 130px; height: 48px;" />
             </div>
 
             <!-- body content -->
