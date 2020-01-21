@@ -18,6 +18,7 @@ class ComposerStaticInitc8af9dde1b1d61de19be3fd03a064734
         'C' => 
         array (
             'Curl\\' => 5,
+            'ClanCats\\Hydrahon\\' => 18,
         ),
     );
 
@@ -33,6 +34,10 @@ class ComposerStaticInitc8af9dde1b1d61de19be3fd03a064734
         'Curl\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+        ),
+        'ClanCats\\Hydrahon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/clancats/hydrahon/src',
         ),
     );
 
