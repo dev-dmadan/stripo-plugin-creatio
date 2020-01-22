@@ -9,9 +9,9 @@ class Database {
     /**
      * 
      */
-    public function __construct($useBuilder) {
+    public function __construct() {
         $this->open();
-        if($useBuilder) {
+        if(USE_SQL_BUILDER) {
             $connection = $this->connection;
             $this->builder = new \ClanCats\Hydrahon\Builder('mysql', 
                 function($query, $queryString, $queryParameters) use($connection) {

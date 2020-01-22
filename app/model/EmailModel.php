@@ -2,18 +2,12 @@
 Defined('BASE_PATH') or die(ACCESS_DENIED);
 
 class EmailModel extends Database {
-    const useBuilder = true;
     const tableName = 'email';
-    
-    public $emailId;
-    public $templateId;
-    public $templateName;
-    public $html;
-    public $css;
-    public $htmlFull;
+    private $email;
 
     public function __construct() {
-        parent::__construct(self::useBuilder);
+        parent::__construct();
+        $this->email = $this->builder->table(self::tableName);
     }
     
     /**
@@ -26,8 +20,27 @@ class EmailModel extends Database {
     /**
      * 
      */
-    public function insert() {
+    public function insert($data) {
+        $success = false;
+        $error = null;
 
+        try {
+            $this->connection->beginTransaction();
+            
+            $this->email->insert($data)->execute();
+
+            $this->connection->commit();
+            $success = true;
+        }
+        catch (PDOException $e) {
+            $this->connection->rollBack();
+            $error = $e->getMessage();
+        }
+
+        return (object)array(
+            'success' => $success,
+            'error' => $error
+        );
     }
 
     /**
@@ -48,7 +61,31 @@ class EmailModel extends Database {
      * 
      */
     public function generateId() {
-        
+        $success = false;
+        $error = null;
+
+        $query = "SELECT f_get_increment() increment";
+        try {
+            $this->connection->beginTransaction();
+
+            $statement = $this->connection->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+            $statement->closeCursor();
+            $this->connection->commit();
+            $success = true;
+        } 
+        catch (PDOException $e) {
+            $this->connection->rollBack();
+            $error = $e->getMessage();
+        }
+
+        return (object)array(
+            'success' => $success,
+            'data' => $result,
+            'error' => $error
+        );
     }
 
     public function __destruct() {

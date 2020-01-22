@@ -14,7 +14,7 @@ class Home extends Controller {
         $authCreatio->verifyJWTToken();
 
         $this->stripo = new Stripo();
-        $this->model('EmailModel');
+        $this->model('EmailModel', 'Email');
 
         $this->creatio = new RequestCreatio(BASE_URL_CREATIO, USERNAME_CREATIO, PASSWORD_CREATIO);
 
@@ -35,10 +35,10 @@ class Home extends Controller {
         $access_key = isset($_GET['access_key']) && !empty($_GET['access_key']) ? $_GET['access_key'] : false;
 
         if($templateId && ($action && strtolower($action) == 'add')) {
-            $this->editorAdd($templateId, $emailId);
+            $emailId = $this->editorAdd($templateId, $templateName);
         }
         else if($templateId && $emailId && ($action && strtolower($action) == 'edit')) {
-            $this->editorEdit($templateId);
+            $this->editorEdit($templateId, $emailId);
         }
         else {
             header("Content-Type: application/json");
@@ -60,11 +60,24 @@ class Home extends Controller {
     /**
      * 
      */
-    private function editorAdd($templateId) {
-        // generate emailId dan update emailId ke bpm
+    private function editorAdd($templateId, $templateName) {
+        // generate emailId
+        $generateId = $this->Email->generateId();
+        if(!$generateId->success) {
+            $this->requestError(400, 'Something Wrong Happen, Please Try Again', false);
+        }
+        $emailId = $generateId->data['increment'];
+        
+        // update emailId ke bpm
 
         // save local
-        // echo 'Editor Add';
+        $this->Email->insert(array(
+            'id' => $emailId,
+            'id_bpm' => '',
+            'name' => $templateName
+        ));
+
+        return $emailId;
     }
 
     /**
