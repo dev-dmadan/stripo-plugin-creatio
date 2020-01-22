@@ -88,10 +88,10 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
 
                 <!-- Container Plugin -->
                 <div class="row">
-                    <div class="col-md-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-md-4 col-sm-6 col-xs-12" style="margin:-20px 0px 0px 0px;">
                         <div id="stripoSettingsContainer"></div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12" style="padding-right: 0px; margin:-20px 0px 0px 0px;">
                         <div id="stripoPreviewContainer"></div>
                     </div>
                 </div>
