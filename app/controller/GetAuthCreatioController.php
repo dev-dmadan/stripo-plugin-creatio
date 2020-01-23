@@ -115,15 +115,23 @@ class GetAuthCreatio extends Controller {
      * 
      */
     private function checkToken($token) {
-        // raw original key                 : tokenAkses_keStripoPlugin_creatioPunya
-        // md5 original key                 : 2a4a215c0f46c9fd8895e0840b0498ac
-        // md5 hash bycrypt original key    : $2y$10$ojCgSMtNAq4XOGmDm9b62utdUTNF2lETOePa/azD8h2d/XpUJEvLO
+        // 8296d4960e46b62870f7fd7442e2f831
+
         $result = array(
             'success' => false,
             'message' => ''
         );
 
-        $result['success'] = password_verify($token, '$2y$10$ojCgSMtNAq4XOGmDm9b62utdUTNF2lETOePa/azD8h2d/XpUJEvLO');
+        $getAccessToken = $this->AuthCreatio->getToken();
+        var_dump($getAccessToken);
+        die();
+        if(!$getAccessToken->success) {
+            $result['message'] = $getAccessToken->error;
+
+            return $result;
+        }
+
+        $result['success'] = password_verify($token, $getAccessToken->data[0]['token']);
         $result['message'] = $result['success'] ? '' : 'Access Denied: Invalid Token';
 
         return $result;
@@ -133,6 +141,9 @@ class GetAuthCreatio extends Controller {
      * 
      */
     private function generateJWTToken($username, $source) {        
+        // raw original key                 : keyAuthUntukKeperluanGenerateTokenJWT
+        // md5 original key                 : 5955b79bfe79491f4759b213bf392274
+
         $payload = array(
             "iss" => "https://citilink.bpmonline.asia/email-editor",
             "aud" => $source,
