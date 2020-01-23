@@ -34,8 +34,8 @@ $route = new \Klein\Klein();
     });
 
     // save template
-    $route->respond('POST', '/save', function() use ($controller) {
-        $controller->call('home/save', null);
+    $route->respond('PUT', '/save/[i:id]', function($request) use ($controller) {
+        $controller->call('home/save', $request->id);
     });
 
     // get html full
