@@ -1,12 +1,11 @@
 const accessKey = document.getElementById('access_key').value;
 const action = document.getElementById('action').value;
 const templateId = document.getElementById('templateId').value;
+const emailId = document.getElementById('emailId').value;
 const save = document.getElementById('save');
 const saveAsTemplate = document.getElementById('saveAsTemplate');
 const preview = document.getElementById('preview');
 const backPreview = document.getElementById('back-preview');
-
-let emailId = document.getElementById('emailId').value;
 
 loading();
 
@@ -23,34 +22,11 @@ window.onload = () => {
         backPreview.addEventListener('click', onClickBackPreview);
     /** end on click button */
 
-    // fetch('https://plugins.stripo.email/api/v1/auth', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         pluginId: 'c570a38a2dec4fef80c9d6c5d8aea09b',
-    //         secretKey: 'd83328ff24e54477a019bb3c6f6b9df8'
-    //     })
-    // })
-    // .then(response => {
-    //     return response.json();
-    // })
-    // .then(data => {
-    //     console.log(data);
-    // })
-    // .catch(error => {
-    //     console.log(error);
-    // });
-
-    // console.log(accessKey, BASE_URL, SITE_URL);
-
-    loadDefaultTemplate()
-    .then(template => {
-        console.log(template);
-
-        iniStripo(template, '123');
+    loadTemplate(response => {
+        console.log('loadTemplate: ', response);
+        if(response.success) {
+            iniStripo({html: response.data.html, css: response.data.css}, emailId);
+        } 
     });
 }
 
@@ -64,7 +40,7 @@ function iniStripo(template, id) {
         html: template.html,
         css: template.css,
         apiRequestData: {
-           emailId: emailId
+           emailId: id
         },
         getAuthToken: function(callback) {
             getTokenStripo(response => {
@@ -102,7 +78,7 @@ function compileEmailStripo(callback, minimize = true) {
 /**
  * 
  */
-async function getTokenStripo(callback) {
+function getTokenStripo(callback) {
     let result = {
         success: false,
         token: ''
@@ -137,7 +113,7 @@ async function getTokenStripo(callback) {
 /**
  * 
  */
-async function loadTemplate() {
+function loadTemplate(callback) {
     let result = {
         success: false,
         data: {
@@ -175,62 +151,6 @@ async function loadTemplate() {
         result.message = error;
         callback(result);
     });
-}
-
-/**
- * 
- */
-async function loadDefaultTemplate() {
-    let result = {
-        html: null,
-        css: null
-    };
-    const html = fetch('https://raw.githubusercontent.com/ardas/stripo-plugin/master/Public-Templates/Basic-Templates/Trigger%20newsletter%20mockup/Trigger%20newsletter%20mockup.html')
-                .then(response => {
-                    return response.text();
-                });
-
-    const css = fetch('https://raw.githubusercontent.com/ardas/stripo-plugin/master/Public-Templates/Basic-Templates/Trigger%20newsletter%20mockup/Trigger%20newsletter%20mockup.css')
-                .then(response => {
-                    return response.text();
-                });
-    
-    return await Promise.all([html, css])
-    .then(response => {
-        result.html = response[0];
-        result.css = response[1];
-
-        return result;
-    });
-}
-
-/**
- * 
- */
-async function getAuthToken() {
-    let url = 'https://plugins.stripo.email/api/v1/auth';
-    const request = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            pluginId: '',
-            secretKey: ''
-        })
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        
-    })
-    .catch(error => {
-
-    });
-
-    return await request.json();
 }
 
 /**
@@ -275,25 +195,6 @@ function onClickPreview() {
             });
         });
     });
-
-    // let mainEditor =  document.querySelector('#main-editor');
-    // let previewEmail =  document.querySelector('.preview-email');
-    // mainEditor.classList.add('animated', 'fadeOut');
-
-    // mainEditor.addEventListener('animationend', function() { 
-    //     // hide email editor
-    //     mainEditor.style.display = 'none';
-    //     // hapus si animasi
-    //     mainEditor.classList.remove('animated', 'fadeOut');
-
-    //     // // preview email
-    //     previewEmail.style.display = 'block';
-    //     previewEmail.classList.add('animated', 'fadeIn');
-    //     previewEmail.addEventListener('animationend', function() {
-    //         // hapus si animasi
-    //         previewEmail.classList.remove('animated', 'fadeIn');
-    //     });
-    // });
 }
 
 /**
@@ -345,7 +246,3 @@ function loading(show = true) {
         loading.style.display = "none";
     }
 }
-
-/**
- * 
- */
