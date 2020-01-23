@@ -76,20 +76,120 @@ class Home extends Controller {
         if(!$generateId->success) {
             $this->requestError(400, 'Something Wrong Happen, Please Try Again', false);
         }
-        $emailId = $generateId->data['increment'];
-        
+        $emailId = date('Ymd').sprintf("%05d", $generateId->data);
+
         // save local
         $this->Email->insert(array(
             'id' => $emailId,
             'id_bpm' => $templateId,
             'name' => $templateName
         ));
-
+        
         // update emailId ke bpm
 
         return $emailId;
     }
 
+    /**
+     * Method save
+     * @param {string} emailId
+     */
+    public function save($emailId) {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        header("Accept: application/json");
+        header("Access-Control-Allow-Methods: PUT");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $result = (object)array(
+            'success' => false,
+            'message' => ''
+        );
+
+        $check = true;
+        $data = json_decode(file_get_contents("php://input"));
+        if(!empty($data)) {
+            if(!isset($data->templateId) || empty($data->templateId)) {
+                $result->message .= 'Template Id is required.';
+                $check = false;
+            }
+
+            if(!isset($data->templateName)) {
+                $result->message .= 'Template Name is required.';
+                $check = false;
+            }
+
+            if(!isset($data->html)) {
+                $result->message .= 'HTML is required.';
+                $check = false;
+            }
+
+            if(!isset($data->css)) {
+                $result->message .= 'CSS is required.';
+                $check = false;
+            }
+
+            if(!isset($data->htmlFull)) {
+                $result->message .= 'HTML Full is required.';
+                $check = false;
+            }
+        }
+        else {
+            $this->requestError(400, 'Please check parameter request', true);
+        }
+
+        if(!$check) {
+            $this->requestError(400, $result->message, true);
+        }
+
+        // update template local
+        $updateLocal = $this->Email->update(
+            [
+                'name' => $data->templateName,
+                'html' => $data->html,
+                'css' => $data->css,
+                'html_css' => $data->htmlFull,
+            ], 
+            [
+                'id' => $emailId,
+                'id_bpm' => $data->templateId
+            ]
+        );
+        if(!$updateLocal->success) {
+            $this->requestError(400, $updateLocal->error, true);
+        }
+
+        // update template ke bpm
+        
+        
+        $result->success = true;
+
+        http_response_code(200);
+        echo json_encode($result);
+    }
+
+    /**
+     * 
+     */
+    public function getTokenStripo() {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        header("Accept: application/json");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $tokenStripo = '';
+        $tokenStripo = $this->stripo->getToken($this->pluginId, $this->secretKey);
+        if(empty($tokenStripo)) {
+            $this->requestError(400, 'Get Token Stripo is failed. Please try again');
+        }
+
+        http_response_code(200);
+        echo json_encode(array('token' => $tokenStripo), JSON_PRETTY_PRINT);
+    }
+    
     /**
      * 
      */
@@ -114,9 +214,7 @@ class Home extends Controller {
         }
 
         $getTemplate = $this->Email->select(
-            [
-                'html', 'css'
-            ], 
+            ['html', 'css'], 
             [
                 'id' => $data->emailId,
                 'id_bpm' => $data->templateId
@@ -152,37 +250,10 @@ class Home extends Controller {
             }
         }
 
+        http_response_code(200);
         echo json_encode($result);
     }
 
-    /**
-     * 
-     */
-    public function save() {
-        // update template local
-
-        // update template ke bpm
-    }
-
-    /**
-     * 
-     */
-    public function getTokenStripo() {
-        header("Access-Control-Allow-Origin: *");
-        header("Content-Type: application/json");
-        header("Accept: application/json");
-        header("Access-Control-Allow-Methods: POST");
-
-        $tokenStripo = '';
-        $tokenStripo = $this->stripo->getToken($this->pluginId, $this->secretKey);
-        if(empty($tokenStripo)) {
-            $this->requestError(400, 'Get Token Stripo is failed. Please try again');
-        }
-
-        http_response_code(200);
-        echo json_encode(array('token' => $tokenStripo), JSON_PRETTY_PRINT);
-    }
-    
     /**
      * 
      */

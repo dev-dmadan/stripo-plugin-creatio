@@ -14,7 +14,13 @@ class EmailModel extends Database {
     }
 
     /**
-     * 
+     * Method select
+     * @param {array / string} column
+     * @param {array} conditional
+     * @return {object} result
+     *              success {boolean}
+     *              error {string}
+     *              data {array}
      */
     public function select($column, $conditional = null) {
         $success = false;
@@ -24,12 +30,8 @@ class EmailModel extends Database {
         try {
             $q = $this->email->select();
             
-            if(is_array($column) && count($conditional) > 0) {
-                $column_ = array();
-                foreach($column as $value) {
-                    $column_[] = $value;
-                }
-                $q->fields($column_);
+            if(is_array($column) && count($column) > 0) {
+                $q->fields($column);
             }
             else if(is_string($column)) {
                 $q->fields([$column]);
@@ -56,7 +58,11 @@ class EmailModel extends Database {
     }
 
     /**
-     * 
+     * Method insert
+     * @param {array} data
+     * @return {object} result
+     *              success {boolean}
+     *              error {string}
      */
     public function insert($data) {
         $success = false;
@@ -82,17 +88,38 @@ class EmailModel extends Database {
     }
 
     /**
-     * 
+     * Method update
+     * @param 
      */
-    public function update() {
+    public function update($data, $conditional) {
+        $success = false;
+        $error = null;
+        $result = null;
 
-    }
+        try {
+            $q = $this->email->update();
+            
+            if(is_array($data) && count($data) > 0) {
+                $q->set($data);
+            }
 
-    /**
-     * 
-     */
-    public function delete() {
+            if(is_array($conditional) && count($conditional) > 0) {
+                foreach($conditional as $key => $value) {
+                    $q->where($key, $value);
+                }
+            }
 
+            $result = $q->execute();
+            $success = true;
+        } 
+        catch (PDOException $e) {
+            $error = $e->getMessage();
+        }
+        
+        return (object)array(
+            'success' => $success,
+            'error' => $error
+        );
     }
     
     /**
