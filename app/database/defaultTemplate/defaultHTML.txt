@@ -1,0 +1,585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head> 
+  <meta charset="UTF-8"> 
+  <meta content="width=device-width, initial-scale=1" name="viewport"> 
+  <meta name="x-apple-disable-message-reformatting"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta content="telephone=no" name="format-detection"> 
+  <title></title> 
+  <!--[if (mso 16)]>
+    <style type="text/css">
+    a {text-decoration: none;}
+    </style>
+    <![endif]--> 
+  <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--> 
+ <!--[if !mso]><!-- --><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet"><!--<![endif]--></head><body> 
+  <div class="es-wrapper-color"> 
+   <!--[if gte mso 9]>
+			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+				<v:fill type="tile" color="#f6f6f6"></v:fill>
+			</v:background>
+		<![endif]--> 
+   <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0"> 
+    <tbody> 
+     <tr> 
+      <td class="esd-email-paddings" valign="top"> 
+        
+        
+        
+        
+        
+        
+        
+        <table cellpadding="0" cellspacing="0" class="es-content esd-footer-popover" align="center">
+                    <tbody><tr><td class="esd-stripe" align="center" esd-custom-block-id="221">
+                
+                
+                
+            
+        
+                
+                
+                
+            
+        
+    <table class="es-content-body" style="background-color: transparent;" width="600" cellspacing="0" cellpadding="0" align="center" esd-img-prev-src="">
+        <tbody>
+            <tr>
+                <td class="esd-structure" align="left" style="background-position: left top; background-color: rgb(255, 255, 255);" bgcolor="#ffffff">
+                
+                
+                
+                
+                
+                
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td class="esd-container-frame" width="600" valign="top" align="center" esd-custom-block-id="214">
+                
+                
+                
+                
+                
+                
+                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p10t es-p15b">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank"> <img src="https://farm5.staticflickr.com/4254/34497439284_4dc3844160_z.jpg" alt="" style="display: block;" width="148"> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="esd-structure" align="left" style="background-position: left top;">
+                
+                
+                
+                
+                
+                
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="600" class="esd-container-frame" align="center" valign="top" esd-custom-block-id="217">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="background-position: left top;">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-image">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank"> <img class="adapt-img esdev-stretch-width" src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220008/9371540203112365.jpg" alt="" style="display: block; background: url(' box-shadow: rgb(238, 238, 238) 0px 0px 0px 1px inset;');" width="600"> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="esd-structure es-p20t es-p20r es-p20l" align="left" bgcolor="#ffffff" style="background-color: rgb(255, 255, 255);" esd-custom-block-id="218">
+                
+                
+                
+                
+                
+                
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="560" class="esd-container-frame" align="center" valign="top">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p>CONTENT TEXT</p>
+                                                    <p><br></p>
+                                                    <p><br></p>
+                                                    <p>CONTENT TEXT</p>
+                                                    <p><br></p>
+                                                    <p><br></p>
+                                                    <p>CONTENT TEXT</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="esd-structure es-p25t es-p25b es-p20r es-p20l" align="left" style="background-position: left top; background-color: rgb(255, 255, 255);" bgcolor="#ffffff" esd-custom-block-id="213">
+                
+                
+                
+                
+                
+                
+                    <!--[if mso]><table width="560" cellpadding="0" 
+                            cellspacing="0"><tr><td width="194" valign="top"><![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="es-left" align="left">
+                        <tbody>
+                            <tr>
+                                <td width="174" class="es-m-p0r es-m-p20b esd-container-frame" align="center">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-text es-p20t es-p15b">
+                
+                
+                
+                
+                
+                
+                                                    <p style="color: #0b8645; font-size: 15px; font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif;">Citilink Trip</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p20b">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank" href="https://trip.citilink.co.id/id/"> <img src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220007/20351540198397875.jpg" alt="" style="display: block;" width="70"> </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; color: #0b8645;">Pesan hotel</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p><span style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; font-size: 12px;">Jadi lebih praktis di Citilink Trip</span></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class="es-hidden" width="20"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]></td><td width="173" valign="top"><![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="es-left" align="left">
+                        <tbody>
+                            <tr>
+                                <td width="173" class="es-m-p20b esd-container-frame" align="center">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-text es-p20t es-p15b">
+                
+                
+                
+                
+                
+                
+                                                    <p style="color: rgb(11, 134, 69); font-size: 15px; line-height: 150%;"><span style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif;">Meals</span></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p10b">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank" href="https://www.citilink.co.id/menu-catalog-service-on-board"> <img src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220007/46741540198437020.png" alt="" style="display: block;" width="80"> </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; color: #0b8645;">Pesan hotel</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text es-p40b">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; font-size: 12px;">Di udara bersama Citilink</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]></td><td width="20"></td><td width="173" valign="top"><![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="es-right" align="right">
+                        <tbody>
+                            <tr>
+                                <td width="173" align="center" class="esd-container-frame">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="background-position: left top;">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-text es-p20t es-p15b">
+                
+                
+                
+                
+                
+                
+                                                    <p style="color: #0b8645; font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; font-size: 15px;">Green Pass</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p10b">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank" href="https://www.citilink.co.id/citilink-merchants"> <img src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220007/58771540198445831.png" alt="" style="display: block;" width="80"> </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; color: #0b8645;">Pesan hotel</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; font-size: 12px; line-height: 150%;">Untuk mendapatkan potongan harga di hotel, Restaurant dan Spa favoritmu</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td class="esd-structure es-p20t es-p20r es-p20l" align="left" style="background-position: left top; background-color: rgb(225, 221, 223);" bgcolor="#E1DDDF" esd-custom-block-id="215">
+                
+                
+                
+                
+                
+                
+                    <!--[if mso]><table width="560" cellpadding="0" 
+                            cellspacing="0"><tr><td width="194" valign="top"><![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="es-left" align="left">
+                        <tbody>
+                            <tr>
+                                <td width="174" class="es-m-p0r es-m-p20b esd-container-frame" align="center">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p10t">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank"> <img src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220007/26281540200684442.png" alt="" style="display: block;" width="174"> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class="es-hidden" width="20"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]></td><td width="173" valign="top"><![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="es-left" align="left">
+                        <tbody>
+                            <tr>
+                                <td width="173" class="es-m-p20b esd-container-frame" align="center">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="background-position: left top;">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-size: 10px; font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; line-height: 200%;"><strong>GET CONNECTED WITH US</strong></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-social">
+                
+                
+                
+                
+                
+                
+                                                    <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" valign="top">
+                                                                    <a target="_blank" href="https://www.facebook.com/citilink"><img title="Facebook" src="https://plugins.stripo.email/static/latest//assets/img/social-icons/logo-black/facebook-logo-black.png" alt="Fb" width="32"></a>
+                                                                </td>
+                                                                <td align="center" valign="top">
+                                                                    <a target="_blank" href="https://www.instagram.com/citilink/"><img title="Instagram" src="https://plugins.stripo.email/static/latest//assets/img/social-icons/logo-black/instagram-logo-black.png" alt="Ig" width="32"></a>
+                                                                </td>
+                                                                <td align="center" valign="top">
+                                                                    <a target="_blank" href="https://twitter.com/citilink"><img title="Twitter" src="https://plugins.stripo.email/static/latest//assets/img/social-icons/logo-black/twitter-logo-black.png" alt="Tw" width="32"></a>
+                                                                </td>
+                                                                <td align="center" valign="top">
+                                                                    <a target="_blank" href="https://www.youtube.com/watch?v=qi0SKeXX5QY"><img title="Youtube" src="https://plugins.stripo.email/static/latest//assets/img/social-icons/logo-black/youtube-logo-black.png" alt="Yt" width="32"></a>
+                                                                </td>
+                                                                <td align="center" valign="top">
+                                                                    <a target="_blank" href="https://plus.google.com/+citilink"><img title="Google+" src="https://plugins.stripo.email/static/latest//assets/img/social-icons/logo-black/google-plus-logo-black.png" alt="G+" width="32"></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-size: 10px; font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif; line-height: 100%; text-align: center;">PT. Citilink Indonesia Menara Citicon, Lantai 16. J. S. Parman KAV.72, Slipi Jakarta Barat 11410</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]></td><td width="20"></td><td width="173" valign="top"><![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="es-right" align="right">
+                        <tbody>
+                            <tr>
+                                <td width="173" align="center" class="esd-container-frame">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" class="esd-block-text">
+                
+                
+                
+                
+                
+                
+                                                    <p style="font-size: 10px; font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif;"><strong>GET OUR APP NOW</strong></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p5">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank" href="https://itunes.apple.com/us/app/citilink/id692792816?ls=1&amp;mt=8"> <img src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220007/46891540200697257.png" alt="" style="display: block;" width="100"> </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="esd-block-image es-p5b">
+                
+                
+                
+                
+                
+                
+                                                    <a target="_blank" href="https://play.google.com/store/apps/details?id=id.co.m.citilink"> <img src="https://plugins.stripo.email/content/18f2ef44142243efa50045d535486cd6/lib/pluginId_18f2ef44142243efa50045d535486cd6_email_201810220007/201540200716728.png" alt="" style="display: block;" width="100"> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td class="esd-structure es-p20t es-p20r es-p20l" align="left" bgcolor="#808080" style="background-position: left top; background-color: rgb(128, 128, 128);" esd-custom-block-id="216">
+                
+                
+                
+                
+                
+                
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="560" class="esd-container-frame" align="center" valign="top">
+                
+                
+                
+                
+                
+                
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td align="right" class="esd-block-text es-p10b" bgcolor="transparent" esd-links-color="#ffffff">
+                
+                
+                
+                
+                
+                
+                                                    <p style="color: #ffffff; font-size: 8px; line-height: 150%;"><a target="_blank" style="font-size: 8px; color: #ffffff;" href="http://t.news.citilink-indonesia.com/r/?id=h7b36ce,5f3872,5f9673&amp;p1=%40ILhROxpWebIkbanAyXgOag%3D%3D">Unsubscribe</a></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</td></tr>
+                </tbody></table></td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+ </body></html>
