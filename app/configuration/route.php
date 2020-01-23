@@ -28,6 +28,11 @@ $route = new \Klein\Klein();
         $controller->call('Home/getTokenStripo', null, true);
     });
 
+    // get template from local
+    $route->respond('POST', '/get-template', function() use ($controller) {
+        $controller->call('Home/getTemplate', null, true);
+    });
+
     // save template
     $route->respond('POST', '/save', function() use ($controller) {
         $controller->call('home/save', null);
