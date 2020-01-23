@@ -21,11 +21,11 @@ switch (ENVIRONMET) {
         
         $configuration['DEFAULT_CONTROLLER'] = '';
 
+        $configuration['KEY_AUTH'] = '';
         
         /**
          * Creatio Integration Setup
          */
-        $configuration['KEY_AUTH'] = '';
         $configuration['BASE_URL_CREATIO'] = '';
         $configuration['USERNAME_CREATIO'] = '';
         $configuration['PASSWORD_CREATIO'] = '';
@@ -59,11 +59,11 @@ switch (ENVIRONMET) {
         
         $configuration['DEFAULT_CONTROLLER'] = '';
 
+        $configuration['KEY_AUTH'] = '';
         
         /**
          * Creatio Integration Setup
          */
-        $configuration['KEY_AUTH'] = '';
         $configuration['BASE_URL_CREATIO'] = '';
         $configuration['USERNAME_CREATIO'] = '';
         $configuration['PASSWORD_CREATIO'] = '';
@@ -97,10 +97,11 @@ switch (ENVIRONMET) {
         
         $configuration['DEFAULT_CONTROLLER'] = 'home';
         
+        $configuration['KEY_AUTH'] = '5955b79bfe79491f4759b213bf392274';
+
         /**
          * Creatio Integration Setup
          */
-        $configuration['KEY_AUTH'] = '5955b79bfe79491f4759b213bf392274';
         $configuration['BASE_URL_CREATIO'] = 'http://localhost:8083';
         $configuration['USERNAME_CREATIO'] = 'Supervisor';
         $configuration['PASSWORD_CREATIO'] = 'Supervisor';
