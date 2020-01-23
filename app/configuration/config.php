@@ -100,7 +100,7 @@ switch (ENVIRONMET) {
         /**
          * Creatio Integration Setup
          */
-        $configuration['KEY_AUTH'] = '2a4a215c0f46c9fd8895e0840b0498ac';
+        $configuration['KEY_AUTH'] = '5955b79bfe79491f4759b213bf392274';
         $configuration['BASE_URL_CREATIO'] = 'http://localhost:8083';
         $configuration['USERNAME_CREATIO'] = 'Supervisor';
         $configuration['PASSWORD_CREATIO'] = 'Supervisor';
