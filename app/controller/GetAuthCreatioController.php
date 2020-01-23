@@ -123,15 +123,13 @@ class GetAuthCreatio extends Controller {
         );
 
         $getAccessToken = $this->AuthCreatio->getToken();
-        var_dump($getAccessToken);
-        die();
         if(!$getAccessToken->success) {
             $result['message'] = $getAccessToken->error;
 
             return $result;
         }
 
-        $result['success'] = password_verify($token, $getAccessToken->data[0]['token']);
+        $result['success'] = password_verify($token, $getAccessToken->data);
         $result['message'] = $result['success'] ? '' : 'Access Denied: Invalid Token';
 
         return $result;
