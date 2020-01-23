@@ -31,10 +31,10 @@ class Request {
 
             if(method_exists($object, $method)) {
                 $methodExists = true;
-                if(!empty($data) && gettype() == 'array') {
-                    call_user_func_array(array($object, $method), $params);
+                if(!empty($data) && gettype($data) == 'array') {
+                    call_user_func_array(array($object, $method), $data);
                 }
-                else if(!empty($data) && gettype() != 'array') {
+                else if(!empty($data) && gettype($data) != 'array') {
                     $object->$method($data);
                 }
                 else {
