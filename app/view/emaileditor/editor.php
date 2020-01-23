@@ -1,16 +1,4 @@
-<?php 
-Defined('BASE_PATH') or die(ACCESS_DENIED); 
-
-// var_dump(array(
-//     'emailId' => $emailId,
-//     'templateId' => $templateId,
-//     'templateName' => $templateName,
-//     'macro' => $macro,
-//     'action' => $action,
-//     'access_key' => $access_key
-// ));
-
-?>
+<?php Defined('BASE_PATH') or die(ACCESS_DENIED); ?>
 
 <!DOCTYPE html>
 <html>
@@ -66,7 +54,6 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
                                 <input id="templateName" type="text" class="form-control" placeholder="Template Name" value="<?= $templateName ?>">
                             </div>
                             <button id="save" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Save Email"><i class="fas fa-save"></i></button>
-                            <button id="saveAsTemplate" type="button" class="btn btn-default" title="Save as Template"><i class="fas fa-save"></i> Save as Template</button>
                         </form>
 
                         <!-- panel 2 -->
@@ -88,10 +75,10 @@ Defined('BASE_PATH') or die(ACCESS_DENIED);
 
                 <!-- Container Plugin -->
                 <div class="row">
-                    <div class="col-md-4 col-md-4 col-sm-6 col-xs-12" style="padding-right: 0px; margin:-20px 0px 0px -10px; position: relative;">
+                    <div class="col-md-3 col-md-3 col-sm-6 col-xs-12" style="padding-right: 0px; margin:-20px 0px 0px -10px; position: relative;">
                         <div id="stripoSettingsContainer"></div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12" style="padding-right: 0px; margin:-20px 0px 0px 10px; position: relative;">
+                    <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" style="padding-right: 0px; margin:-20px 0px 0px 10px; position: relative;">
                         <div id="stripoPreviewContainer"></div>
                     </div>
                 </div>

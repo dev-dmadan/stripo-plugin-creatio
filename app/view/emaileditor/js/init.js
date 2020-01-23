@@ -3,27 +3,29 @@ const action = document.getElementById('action').value;
 const templateId = document.getElementById('templateId').value;
 const emailId = document.getElementById('emailId').value;
 const save = document.getElementById('save');
-const saveAsTemplate = document.getElementById('saveAsTemplate');
 const preview = document.getElementById('preview');
 const backPreview = document.getElementById('back-preview');
+const testEmail = document.getElementById('test-email');
 
 loading();
 window.onload = () => {
     console.log('%c Document ready...', 'color: green; font-weight: bold');
     
-    loading(false);
     $('[data-toggle="tooltip"]').tooltip();
 
     /** on click button */
         save.addEventListener('click', onClickSave);
         preview.addEventListener('click', onClickPreview);
-        saveAsTemplate.addEventListener('click', onClickSaveAsTemplate);
         backPreview.addEventListener('click', onClickBackPreview);
+        testEmail.addEventListener('click', onClickTestEmail);
     /** end on click button */
 
     loadTemplate(response => {
         console.log('loadTemplate: ', response);
         if(response.success) {
+            setTimeout(() => {
+                loading(false);
+            }, 5000);
             iniStripo({html: response.data.html, css: response.data.css}, emailId);
         } 
     });
@@ -129,12 +131,29 @@ function getTokenStripo(callback) {
         window.Stripo.init({
             settingsId: 'stripoSettingsContainer',
             previewId: 'stripoPreviewContainer',
+            codeEditorButtonId: 'codeEditor',
+            // undoButtonId: 'undoButton',
+            // redoButtonId: 'redoButton',
             html: template.html,
             css: template.css,
             apiRequestData: {
-            emailId: id
+                emailId: id
             },
-            getAuthToken: function(callback) {
+            // notifications: {
+            //     info: notifications.info.bind(notifications),
+            //     error: notifications.error.bind(notifications),
+            //     warn: notifications.warn.bind(notifications),
+            //     loader: notifications.loader.bind(notifications),
+            //     hide: notifications.hide.bind(notifications),
+            //     success: notifications.success.bind(notifications)
+            // },
+            // versionHistory: {
+            //     changeHistoryLinkId: 'changeHistoryLink',
+            //     onInitialized: function(lastChangeIndoText) {
+            //         $('#changeHistoryContainer').show();
+            //     }
+            // },
+            getAuthToken: callback => {
                 getTokenStripo(response => {
                     console.log('%c Response getTokenStripo: ', 'color: green; font-weight: bold', response);
                     
@@ -150,26 +169,74 @@ function getTokenStripo(callback) {
     }
 
     /**
-     * Method compileEmailStripo
-     * @param {object} callback
-     * @param {boolean} minimize
+     * Method getTemplateStripo
+     * Get template HTML dan CSS dengan markup editor stripo
+     * Method berupa Promise
+     * @resolve {object}
      */
-    function compileEmailStripo(callback, minimize = true) {
-        window.StripoApi.compileEmail((error, html, ampHtml, ampErrors) => {
-            callback({
-                error: error, 
-                html: html, 
-                ampHtml: ampHtml, 
-                ampErrors: ampErrors
-            });
+    function getTemplateStripo() {
+        return new Promise((resolve, reject) => {
+            window.StripoApi.getTemplate((HTML, CSS, width, height) => {
+                console.log('%c Response getTemplate: ', 'color: blue; font-weight: bold', {
+                    HTML: HTML, 
+                    CSS: CSS, 
+                    width: width, 
+                    height: height
+                });
 
-            console.log({
-                error: error, 
-                html: html, 
-                ampHtml: ampHtml, 
-                ampErrors: ampErrors
+                resolve({
+                    success: true,
+                    data: {
+                        html: HTML,
+                        css: CSS
+                    }
+                });
             });
-        }, minimize);
+        });
+    }
+
+    /**
+     * Method compileEmailStripo
+     * Get Full HTML
+     * Method berupa Promise
+     * @param {boolean} minimize
+     * @resolve {object} 
+     * @reject {object}
+     */
+    function compileEmailStripo(minimize = true) {
+        return new Promise((resolve, reject) => {
+            window.StripoApi.compileEmail((error, html, ampHtml, ampErrors) => {
+                console.log('%c Response compileEmailStripo: ', 'color: blue; font-weight: bold', {
+                    error: error, 
+                    html: html, 
+                    ampHtml: ampHtml, 
+                    ampErrors: ampErrors
+                });
+
+                if((!error || error == undefined || error == null) || (!ampErrors || ampErrors == undefined || ampErrors == null) ) {
+                    resolve({
+                        success: true,
+                        data: {
+                            html: html,
+                            ampHtml: ampHtml, 
+                        },
+                        error: {
+                            html: error,
+                            ampHtml: ampErrors 
+                        }
+                    });
+                }
+                else {
+                    reject({
+                        success: false,
+                        error: {
+                            html: error,
+                            ampHtml: ampErrors 
+                        }
+                    });
+                }
+            }, minimize);
+        });
     }
 
 /** End API Plugin Stripo JS */
@@ -179,15 +246,84 @@ function getTokenStripo(callback) {
     /**
      * Method onClickSave
      */
-    function onClickSave() {
+    async function onClickSave() {
         console.log('%c Button save is clicked...', 'color: blue');
-    }
+        loading();
 
-    /**
-     * Method onClickSaveAsTemplate
-     */
-    function onClickSaveAsTemplate() {
-        console.log('%c Button save as template is clicked...', 'color: blue');
+        // get html and css editor markup
+        let getTemplateEmail = getTemplateStripo().then(response => {
+            return {
+                html: response.data.html,
+                css: response.data.css
+            }
+        });
+        
+        // get full html
+        let getCompileEmail = compileEmailStripo().then(response => {
+            return {
+                html: response.data.html
+            }
+        });
+
+        let stripoData = await Promise.all([getTemplateEmail, getCompileEmail]).then(response => {
+            return {
+                html: response[0].html,
+                css: response[0].css,
+                html_css: response[1].html
+            };
+        });
+
+        fetch(`${SITE_URL}save/${emailId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${accessKey}`
+            },
+            body: JSON.stringify({
+                templateId: templateId,
+                templateName: emailId,
+                html: stripoData.html,
+                css: stripoData.css,
+                htmlFull: stripoData.html_css
+            })
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            loading(false);
+            let messageSwal = {
+                icon: data.success ? 'success' : 'error',
+                title: data.success ? 'Yeah...' : 'Oops...',
+                text: data.success ? 'Your template has been saved' : data.message
+            };
+            if(!data.success) {
+                messageSwal.footer = 'Please contact Our Team for information'
+            };
+
+            Swal.fire(messageSwal);
+
+            // ganti url ke edit mode
+            if(action.toLowerCase() == 'add') {
+                let url = new URL(window.location.href);
+
+                url.searchParams.set('action', 'edit');
+                url.searchParams.append('emailId', emailId);
+
+                window.history.pushState("","", url.search);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+    
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong',
+                text: error,
+                footer: 'Please contact Our Team for information'
+            });
+        });
     }
 
     /**
@@ -201,18 +337,26 @@ function getTokenStripo(callback) {
         animateCSS('#main-editor', 'fadeOut', () => {
             document.querySelector('#main-editor').style.display = 'none';
 
-            // get full html+css
-            compileEmailStripo((response) => {
+            compileEmailStripo()
+            .then(response => {
+                console.log('%c Response compileEmailStripo: ', 'color: green; font-weight: bold', response);
+
                 document.querySelector('.preview-email').style.display = 'block';
 
                 animateCSS('.preview-email', 'fadeIn', () => {
-                    document.querySelector('#frameDekstop').srcdoc = response.html;
-                    document.querySelector('#frameSmartphone').srcdoc = response.html;
+                    document.querySelector('#frameDekstop').srcdoc = response.data.html;
+                    document.querySelector('#frameSmartphone').srcdoc = response.data.html;
                     
                     // hide loading
                     loading(false);
                 });
-            });
+            })
+            .catch(error => {
+                console.log('%c Error compileEmailStripo: ', 'color: red; font-weight: bold', error);
+
+                loading(false);
+                onClickBackPreview();
+            })
         });
     }
 
@@ -233,6 +377,15 @@ function getTokenStripo(callback) {
             // hide loading
             loading(false);
         });
+    }
+
+    /**
+     * 
+     */
+    function onClickTestEmail() {
+        console.log('%c Back Button is clicked...', 'color: blue');
+
+
     }
 
 /** End Event Listener */

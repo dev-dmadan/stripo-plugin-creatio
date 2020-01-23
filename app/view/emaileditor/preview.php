@@ -5,7 +5,7 @@
         <div class="panel panel-default">
     <div class="panel-body">
         <button id="back-preview" class="btn btn-default" style="border-radius: 32px;"><i class="fas fa-arrow-left"></i></button>
-        <button class="btn btn-default" style="margin-left: 10px; border-radius: 32px;"><i class="fas fa-paper-plane"></i> <strong>Test Email</strong></button>
+        <button id="test-email" class="btn btn-default" style="margin-left: 10px; border-radius: 32px;"><i class="fas fa-paper-plane"></i> <strong>Test Email</strong></button>
     </div>
     </div>
 

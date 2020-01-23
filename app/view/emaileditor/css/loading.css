@@ -81,9 +81,4 @@
         /* background-color : black; */
         opacity : 0.6;
         cursor: wait;
-        position : absolute;
-    }
-
-    .hide-loading {
-        position : absolute;
     }
