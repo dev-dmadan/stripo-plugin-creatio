@@ -153,7 +153,6 @@ class GetAuthCreatio extends Controller {
                 "source" => $source
             )
         );
-
         $jwt = JWT::encode($payload, KEY_AUTH);
 
         return $jwt;
