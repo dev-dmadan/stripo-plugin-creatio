@@ -38,7 +38,6 @@ class Home extends Controller {
             $emailId = $this->editorAdd($templateId, $templateName);
         }
         else if($templateId && $emailId && ($action && strtolower($action) == 'edit')) {
-            $this->editorEdit($templateId, $emailId);
         }
         else {
             header("Content-Type: application/json");
@@ -61,6 +60,17 @@ class Home extends Controller {
      * 
      */
     private function editorAdd($templateId, $templateName) {
+        $emailId = '';
+
+        $totalTemplateId = $this->Email->getCount('id_bpm', ['id_bpm' => $templateId]);
+        $templateIdExists = $totalTemplateId->success && ($totalTemplateId->data > 0) ? true : false;
+        if($templateIdExists) {
+            $getEmailId = $this->Email->select('id', ['id_bpm' => $templateId]);
+            $emailId = $getEmailId->success && (count($getEmailId->data) > 0) ? $getEmailId->data[0]['id'] : '';
+
+            return $emailId;
+        }
+
         // generate emailId
         $generateId = $this->Email->generateId();
         if(!$generateId->success) {
@@ -68,14 +78,14 @@ class Home extends Controller {
         }
         $emailId = $generateId->data['increment'];
         
-        // update emailId ke bpm
-
         // save local
         $this->Email->insert(array(
             'id' => $emailId,
-            'id_bpm' => '',
+            'id_bpm' => $templateId,
             'name' => $templateName
         ));
+
+        // update emailId ke bpm
 
         return $emailId;
     }
@@ -83,11 +93,75 @@ class Home extends Controller {
     /**
      * 
      */
-    private function editorEdit($templateId, $emailId) {
-        // get html stripo, dan css stripo based on id
+    public function getTemplate() {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        header("Accept: application/json");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        // update local
-        echo 'Editor Edit';
+        $result = (object)array(
+            'success' => false,
+            'message' => '',
+            'html' => null,
+            'css' => null
+        );
+
+        $data = json_decode(file_get_contents("php://input"));
+        if(empty($data)) {
+            $this->requestError(400, 'Please check parameter request', true);
+        }
+
+        $getTemplate = $this->Email->select(
+            [
+                'html', 'css'
+            ], 
+            [
+                'id' => $data->emailId,
+                'id_bpm' => $data->templateId
+            ]
+        );
+        if($getTemplate->success && (!empty($getTemplate->data[0]['html']) && !empty($getTemplate->data[0]['css']))) {
+            $result->success = true;
+            $result->html = $getTemplate->data[0]['html'];
+            $result->css = $getTemplate->data[0]['css'];
+        }
+        else {
+            // get default citilink template
+            $defaultCitilink = $this->Email->select(
+                [
+                    'html', 'css'
+                ], 
+                [
+                    'isTemplate' => 1
+                ]
+            );
+            if($defaultCitilink->success && (!empty($defaultCitilink->data[0]['html']) && !empty($defaultCitilink->data[0]['css']))) {
+                $result->success = true;
+                $result->html = $defaultCitilink->data[0]['html'];
+                $result->css = $defaultCitilink->data[0]['css'];
+            }
+            else {
+                // get default stripo template
+                $defaultStripo = $this->stripo->getDefaultTemplate();
+                $result->success = !empty($defaultStripo['html']) && !empty($defaultStripo['css']) ? true : false;
+                $result->html = $result->success ? $defaultStripo['html'] : null;
+                $result->css = $result->success ? $defaultStripo['css']  : null;
+                $result->message = $result->success ? '' : (empty($getTemplate->error) ? $defaultCitilink->error : $getTemplate->error);
+            }
+        }
+
+        echo json_encode($result);
+    }
+
+    /**
+     * 
+     */
+    public function save() {
+        // update template local
+
+        // update template ke bpm
     }
 
     /**
