@@ -6,6 +6,7 @@ const save = document.getElementById('save');
 const preview = document.getElementById('preview');
 const backPreview = document.getElementById('back-preview');
 const testEmail = document.getElementById('test-email');
+const controlPanel = document.getElementById('control-panel');
 
 loading();
 window.onload = () => {
@@ -18,6 +19,7 @@ window.onload = () => {
         preview.addEventListener('click', onClickPreview);
         backPreview.addEventListener('click', onClickBackPreview);
         testEmail.addEventListener('click', onClickTestEmail);
+        controlPanel.addEventListener('click', onClickControlPanel);
     /** end on click button */
 
     loadTemplate(response => {
@@ -384,9 +386,31 @@ function getTokenStripo(callback) {
      */
     function onClickTestEmail() {
         console.log('%c Back Button is clicked...', 'color: blue');
-
-
+        $('#myModal').modal();
     }
+
+    /**
+     * 
+     */
+    function onClickControlPanel () {
+        console.log('%c Control Panel Button is clicked...', 'color: blue');
+        
+        let checkActive = false;
+        if(controlPanel.classList.contains("active")) {
+            checkActive = true;
+        }
+        else {
+            checkActive = false;
+        }
+
+        if(checkActive == true) {
+            showSettingContainerStripo();
+        }
+        else {
+            hideSettingContainerStripo();
+        }
+    }
+
 
 /** End Event Listener */
 
@@ -429,4 +453,18 @@ function loading(show = true) {
         content.classList.remove("show-loading");
         loading.style.display = "none";
     }
+}
+
+function hideSettingContainerStripo() {
+    controlPanel.classList.add("active");
+    
+    document.querySelector('#stripoPreviewContainer').parentElement.removeAttribute('class');
+    document.querySelector('#stripoSettingsContainer').parentElement.style.display = 'none';
+}
+
+function showSettingContainerStripo() {
+    controlPanel.classList.remove("active");
+    
+    document.querySelector('#stripoSettingsContainer').parentElement.style.display = 'block';
+    document.querySelector('#stripoPreviewContainer').parentElement.setAttribute("class", "col-lg-9 col-md-9 col-sm-6 col-xs-12");
 }

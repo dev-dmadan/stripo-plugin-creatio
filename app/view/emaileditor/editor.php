@@ -51,19 +51,20 @@
                         </ul>
                         <form id="form-editor" class="navbar-form navbar-left" role="form">
                             <div class="form-group">
-                                <input id="templateName" type="text" class="form-control" placeholder="Template Name" value="<?= $templateName ?>">
+                                <input id="templateName" type="text" class="form-control template-name" placeholder="Template Name" value="<?= $templateName ?>">
                             </div>
-                            <button id="save" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Save Email"><i class="fas fa-save"></i></button>
+                            <button id="control-panel" type="button" class="btn btn-default navbar-left button-rounded control-panel" style="border-radius: 32px;" data-toggle="tooltip" data-placement="bottom" title="Hide / Show Panel"><i class="fa fa-desktop"></i></button>
+                            <button id="save" type="button" class="btn btn-default button-rounded" data-toggle="tooltip" data-placement="bottom" title="Save Email"><i class="fas fa-save"></i></button>
                         </form>
 
                         <!-- panel 2 -->
                         <ul class="nav navbar-nav navbar-right ">
                             <div class="btn-group">
-                                <button id="undoButton" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Undo"><i class="fas fa-undo"></i></button>
-                                <button id="redoButton" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Redo"><i class="fas fa-redo"></i></button>
+                                <button id="undoButton" type="button" class="btn btn-default navbar-btn button-rounded" data-toggle="tooltip" data-placement="bottom" title="Undo"><i class="fas fa-undo"></i></button>
+                                <button id="redoButton" type="button" class="btn btn-default navbar-btn button-rounded" data-toggle="tooltip" data-placement="bottom" title="Redo"><i class="fas fa-redo"></i></button>
                             </div>
-                            <button id="codeEditor" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Code Editor"><i class="fas fa-code"></i></button>
-                            <button id="preview" type="button" class="btn btn-default navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Preview Email"><i class="fas fa-eye"></i></button>
+                            <button id="codeEditor" type="button" class="btn btn-default navbar-btn button-rounded" data-toggle="tooltip" data-placement="bottom" title="Code Editor"><i class="fas fa-code"></i></button>
+                            <button id="preview" type="button" class="btn btn-default navbar-btn button-rounded" data-toggle="tooltip" data-placement="bottom" title="Preview Email"><i class="fas fa-eye"></i></button>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
