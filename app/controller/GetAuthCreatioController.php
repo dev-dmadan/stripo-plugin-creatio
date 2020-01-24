@@ -146,7 +146,7 @@ class GetAuthCreatio extends Controller {
             "iss" => "https://citilink.bpmonline.asia/email-editor",
             "aud" => $source,
             "iat" => time(),
-            "nbf" => time() + 5,
+            "nbf" => time(),
             "exp" => time() + 36000,
             "data" => array(
                 "username" => $username,
