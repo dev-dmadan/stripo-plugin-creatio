@@ -50,7 +50,7 @@ $route = new \Klein\Klein();
 
     // integrasi data email ke local
     $route->respond('POST', '/integration-email-template', function() use ($controller) {
-        $controller->call('home/integration', null, true);
+        $controller->call('home/integration');
     });
 
     /** Error Request */
