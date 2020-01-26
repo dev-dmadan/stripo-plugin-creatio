@@ -168,8 +168,11 @@ class EmailModel extends Database {
         try {
             $this->connection->beginTransaction();
 
-            $result = (int)$this->email->select(new Ex('f_get_increment() as increment'))->get()[0]['increment'];
+            $statement = $this->connection->prepare($query);
+            $statement->execute();
+            $result = (int)$statement->fetch(PDO::FETCH_ASSOC)['increment'];
 
+            $statement->closeCursor();
             $this->connection->commit();
             $success = true;
         } 

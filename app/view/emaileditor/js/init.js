@@ -284,7 +284,7 @@ function getTokenStripo(callback) {
             },
             body: JSON.stringify({
                 templateId: templateId,
-                templateName: emailId,
+                templateName: document.querySelector('#templateName').value,
                 html: stripoData.html,
                 css: stripoData.css,
                 htmlFull: stripoData.html_css
@@ -325,6 +325,7 @@ function getTokenStripo(callback) {
                 text: error,
                 footer: 'Please contact Our Team for information'
             });
+            loading(false);
         });
     }
 
@@ -386,7 +387,14 @@ function getTokenStripo(callback) {
      */
     function onClickTestEmail() {
         console.log('%c Back Button is clicked...', 'color: blue');
-        $('#myModal').modal();
+
+        Swal.fire({
+            icon: 'info',
+            title: 'Oops...',
+            text: 'Be patient, this feature still development :D'
+        });
+
+        // $('#myModal').modal();
     }
 
     /**

@@ -73,19 +73,34 @@ class Home extends Controller {
 
         // generate emailId
         $generateId = $this->Email->generateId();
+
         if(!$generateId->success) {
             $this->requestError(400, 'Something Wrong Happen, Please Try Again', false);
         }
         $emailId = date('Ymd').sprintf("%05d", $generateId->data);
 
         // save local
-        $this->Email->insert(array(
+        $updateLocal = $this->Email->insert(array(
             'id' => $emailId,
             'id_bpm' => $templateId,
             'name' => $templateName
         ));
         
+        if(!$updateLocal->success) {
+            $this->requestError(400, $updateLocal->error, false);
+        }
+
         // update emailId ke bpm
+        $updateCreatio = $this->creatio->rest('POST', ['service' => 'StripoWebService', 'method' => 'UpdateEmailTemplate'], [
+            'RequestBody' => json_encode([
+                'emailId' => $emailId,
+                'templateId' => $templateId
+            ])
+        ]);
+        
+        if(!$updateCreatio->success || (isset($updateCreatio->response) && !$updateCreatio->response->Success)) {
+            $this->requestError(400, $updateCreatio->message, false);
+        }
 
         return $emailId;
     }
@@ -161,7 +176,20 @@ class Home extends Controller {
         }
 
         // update template ke bpm
+        $updateCreatio = $this->creatio->rest('POST', ['service' => 'StripoWebService', 'method' => 'UpdateEmailTemplate'], [
+            'RequestBody' => json_encode([
+                'emailId' => $emailId,
+                'templateId' => $data->templateId,
+                'templateName' => $data->templateName,
+                'html' => $data->html,
+                'css' => $data->css,
+                'htmllFull' => $data->htmlFull
+            ])
+        ]);
         
+        if(!$updateCreatio->success || (isset($updateCreatio->response) && !$updateCreatio->response->Success)) {
+            $this->requestError(400, $updateCreatio->message, true);
+        }
         
         $result->success = true;
 
