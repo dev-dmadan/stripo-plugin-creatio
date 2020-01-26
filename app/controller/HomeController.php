@@ -377,7 +377,7 @@ class Home extends Controller {
      * 
      */
     public function integration() {
-        $this->creatio = new RequestCreatio('https://citilinkmarketing.creatio.com', 'Supervisor', 'Supervisor20!');
+        $this->creatio = new RequestCreatio('', '', '');
         $getData = $this->creatio->rest('GET', ['service' => 'IntegrationEmailTemplateData', 'method' => 'GetEmailTemplateStripo']);
 
         header("Access-Control-Allow-Origin: *");
