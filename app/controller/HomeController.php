@@ -372,4 +372,45 @@ class Home extends Controller {
             'message' => $message
         ));
     }
+
+    /**
+     * 
+     */
+    public function integration() {
+        $this->creatio = new RequestCreatio('https://citilinkmarketing.creatio.com', 'Supervisor', 'Supervisor20!');
+        $getData = $this->creatio->rest('GET', ['service' => 'IntegrationEmailTemplateData', 'method' => 'GetEmailTemplateStripo']);
+
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        header("Accept: application/json");
+        header("Access-Control-Allow-Methods: PUT");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $i = 0;
+        $error = array();
+        foreach($getData->response as $item) {
+            $data = array();
+            $data['id'] = $item->UsrEmailID;
+            $data['id_bpm'] = $item->Id;
+            $data['name'] = $item->Name;
+            $data['html'] = $item->UsrHtmlStripo;
+            $data['css'] = $item->UsrCssStripo;
+            $data['html_css'] = $item->Body;
+
+            $insert = $this->Email->insert($data);
+            if($insert->success) {
+                $i++;
+            }
+            else {
+                $error[] = $insert->error;
+            }
+        }
+        
+        echo json_encode(array(
+            'TotalData' => Count($getData->response),
+            'TotalInsert' => $i,
+            'Error' => $error
+        ));
+    }
 }

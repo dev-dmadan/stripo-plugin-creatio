@@ -48,6 +48,11 @@ $route = new \Klein\Klein();
         $controller->call('GetAuthCreatio/index', null, true);
     });
 
+    // integrasi data email ke local
+    $route->respond('POST', '/integration-email-template', function() use ($controller) {
+        $controller->call('home/integration', null, true);
+    });
+
     /** Error Request */
     $route->onHttpError(function($code, $router) use ($controller) {
         switch ($code) {
