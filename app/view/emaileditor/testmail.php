@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button id="send-email" type="button" class="btn btn-info"> Send </button>
+          <button id="send-email" type="button" data-dismiss="modal" class="btn btn-info"> Send </button>
         </div>
       </div>
       
