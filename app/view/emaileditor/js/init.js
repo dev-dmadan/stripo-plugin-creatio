@@ -378,7 +378,9 @@ function getTokenStripo(callback) {
 
             document.querySelector('#frameDekstop').srcdoc = '';
             document.querySelector('#frameSmartphone').srcdoc = '';
-
+            
+            document.querySelector('body').removeAttribute('style');
+            
             // hide loading
             loading(false);
         });
@@ -389,12 +391,6 @@ function getTokenStripo(callback) {
      */
     function onClickTestEmail() {
         console.log('%c Test Email is clicked...', 'color: blue');
-
-        // Swal.fire({
-        //     icon: 'info',
-        //     title: 'Oops...',
-        //     text: 'Be patient, this feature still development :D'
-        // });
 
         $('#myModal').modal();
     }
@@ -439,21 +435,20 @@ function getTokenStripo(callback) {
                 messageSwal.footer = 'Please contact Our Team for information'
             };
 
-            Swal.fire(messageSwal);
-            $('#myModal').modal('hide');
-            document.querySelector('body').removeAttribute('class');
             document.querySelector('#email').value = '';
+            Swal.fire(messageSwal);
         })
         .catch(error => {
             console.log(error);
-    
+            
+            loading(false);
+            document.querySelector('#email').value = '';
             Swal.fire({
                 icon: 'error',
                 title: 'Something went wrong',
                 text: error,
                 footer: 'Please contact Our Team for information'
             });
-            loading(false);
         });
     }
 
@@ -532,6 +527,8 @@ function hideSettingContainerStripo() {
     controlPanel.classList.add("active");
     
     document.querySelector('#stripoPreviewContainer').parentElement.removeAttribute('style');
+    document.querySelector('#stripoPreviewContainer').parentElement.removeAttribute('class');
+    document.querySelector('.navbar').style.marginBottom = "0";
     document.querySelector('#stripoSettingsContainer').parentElement.style.display = 'none';
 }
 
@@ -540,4 +537,6 @@ function showSettingContainerStripo() {
     
     document.querySelector('#stripoSettingsContainer').parentElement.style.display = 'block';
     document.querySelector('#stripoPreviewContainer').parentElement.setAttribute("class", "col-lg-9 col-md-9 col-sm-6 col-xs-12");
+    document.querySelector('#stripoPreviewContainer').parentElement.setAttribute("style", "padding-right: 0px; margin:-20px 0px 0px 10px; position: relative;");
+    document.querySelector('.navbar').removeAttribute("style");
 }

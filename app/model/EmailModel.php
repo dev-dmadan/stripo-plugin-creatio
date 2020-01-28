@@ -188,34 +188,6 @@ class EmailModel extends Database {
         );
     }
 
-    public function getStripo() {
-        $success = false;
-        $error = null;
-        $result = null;
-
-        $query = "SELECT id_bpm, html, css FROM email WHERE isTemplate != 1 AND ";
-        $query .= "(html IS NOT NULL AND html != '') AND ";
-        $query .= "(css IS NOT NULL AND css != '') AND ";
-        $query .= "(html_css IS NULL OR html_css = '')";
-
-        try {
-            $statement = $this->connection->prepare($query);
-            $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-            $success = true;
-        }
-        catch (PDOException $e) {
-            $error = $e->getMessage();
-        }
-        
-        return (object)array(
-            'success' => $success,
-            'data' => $result,
-            'error' => $error
-        );
-    }
-
     public function __destruct() {
         $this->close();
     }
