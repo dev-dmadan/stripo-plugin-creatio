@@ -390,4 +390,51 @@ class Home extends Controller {
             'Error' => $error
         ));
     }
+
+    public function sycnEmailTemplate() {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        header("Accept: application/json");
+        header("Access-Control-Allow-Methods: GET");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $result = array();
+        $token = $this->stripo->getToken($this->pluginId, $this->secretKey);
+
+        // get data stripo yg butuh html full
+        $getEmail = $this->Email->getStripo();
+        if($getEmail->success && !empty($getEmail->data)) {
+            // get full email
+            foreach($getEmail->data as $key => $item) {
+                $temp = array();
+
+                $check = true;
+                $i = 0;
+                $htmlFull = '';
+                while($i < 3) {
+                    $htmlFull = $this->stripo->getHtmlFull($token, $item['html'], $item['css']);
+                    if(empty($htmlFull)) {
+                        $check = false;
+                    }
+                    else {
+                        break;
+                    }
+
+                    if(!$check) {
+                        $token = $this->stripo->getToken($this->pluginId, $this->secretKey);
+                    }
+
+                    $i++;
+                }
+
+                if(!empty($htmlFull)) {
+                    $temp['Id'] = $item["id_bpm"];
+                    $temp['Body'] = $htmlFull;
+                    $result[] = $temp;
+                }
+            }
+        }
+
+        echo json_encode($result);
+    }
 }

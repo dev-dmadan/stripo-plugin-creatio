@@ -2,3 +2,5 @@
 vendor/composer/installed.json
 vendor/composer/autoload_static.php
 vendor/composer/autoload_psr4.php
+cookies.txt
+vendor/composer/autoload_psr4.php

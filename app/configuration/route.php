@@ -58,6 +58,11 @@ $route = new \Klein\Klein();
         $controller->call('home/integration');
     });
 
+    // integrasi data email ke citilink
+    $route->respond('GET', '/sycn-email-template', function() use ($controller) {
+        $controller->call('Home/sycnEmailTemplate', null, true);
+    });
+
     /** Error Request */
     $route->onHttpError(function($code, $router) use ($controller) {
         switch ($code) {
