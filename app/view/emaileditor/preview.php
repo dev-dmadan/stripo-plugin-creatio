@@ -53,8 +53,6 @@
             </div>
         </div>
 
-        <?php include_once('testmail.php') ?>
-
     </div>
     <!-- end row -->
     </div>

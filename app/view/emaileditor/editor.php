@@ -87,6 +87,7 @@
         </div>
 
         <?php include_once('preview.php') ?>
+        <?php include_once('testmail.php') ?>
 
         <script>
             const BASE_URL = "<?php echo BASE_URL ?>";

@@ -13,13 +13,21 @@ switch (ENVIRONMET) {
         $configuration['CONTROLLER'] = '';
         $configuration['MODEL'] = '';
         $configuration['ASSETS'] = '';
-        
 
         /**
          * Default Controller
          */
-        
         $configuration['DEFAULT_CONTROLLER'] = '';
+
+        /**
+         * Email
+         */
+        $configuration['HOST_EMAIL'] = '';
+        $configuration['NAME_EMAIL'] = '';
+        $configuration['USERNAME_EMAIL'] = '';
+        $configuration['PASSWORD_EMAIL'] = '';
+        $configuration['PORT_EMAIL'] = '';
+        $configuration['SMTP_SECURE_EMAIL'] = '';
 
         $configuration['KEY_AUTH'] = '';
         
@@ -29,7 +37,6 @@ switch (ENVIRONMET) {
         $configuration['BASE_URL_CREATIO'] = '';
         $configuration['USERNAME_CREATIO'] = '';
         $configuration['PASSWORD_CREATIO'] = '';
-        
 
         /**
          * Configuration Database
@@ -52,12 +59,21 @@ switch (ENVIRONMET) {
         $configuration['MODEL'] = '';
         $configuration['ASSETS'] = '';
         
-
         /**
          * Default Controller
          */
         
         $configuration['DEFAULT_CONTROLLER'] = '';
+
+        /**
+         * Email
+         */
+        $configuration['HOST_EMAIL'] = '';
+        $configuration['NAME_EMAIL'] = '';
+        $configuration['USERNAME_EMAIL'] = '';
+        $configuration['PASSWORD_EMAIL'] = '';
+        $configuration['PORT_EMAIL'] = '';
+        $configuration['SMTP_SECURE_EMAIL'] = '';
 
         $configuration['KEY_AUTH'] = '';
         
@@ -67,7 +83,6 @@ switch (ENVIRONMET) {
         $configuration['BASE_URL_CREATIO'] = '';
         $configuration['USERNAME_CREATIO'] = '';
         $configuration['PASSWORD_CREATIO'] = '';
-        
 
         /**
          * Configuration Database
@@ -94,15 +109,24 @@ switch (ENVIRONMET) {
         /**
          * Default Controller
          */
-        
         $configuration['DEFAULT_CONTROLLER'] = 'home';
         
+        /**
+         * Email
+         */
+        $configuration['HOST_EMAIL'] = '';
+        $configuration['NAME_EMAIL'] = '';
+        $configuration['USERNAME_EMAIL'] = '';
+        $configuration['PASSWORD_EMAIL'] = '';
+        $configuration['PORT_EMAIL'] = 465;
+        $configuration['SMTP_SECURE_EMAIL'] = ''; // tls or ssl
+
         $configuration['KEY_AUTH'] = '5955b79bfe79491f4759b213bf392274';
 
         /**
          * Creatio Integration Setup
          */
-        $configuration['BASE_URL_CREATIO'] = 'http://localhost:8083';
+        $configuration['BASE_URL_CREATIO'] = 'http://localhost:8081';
         $configuration['USERNAME_CREATIO'] = 'Supervisor';
         $configuration['PASSWORD_CREATIO'] = 'Supervisor';
 
@@ -125,6 +149,12 @@ switch (ENVIRONMET) {
     define('MODEL', $configuration['MODEL']);
     define('ASSETS', $configuration['ASSETS']);
     define('DEFAULT_CONTROLLER', $configuration['DEFAULT_CONTROLLER']);
+    define('HOST_EMAIL', $configuration['HOST_EMAIL']);
+    define('NAME_EMAIL', $configuration['NAME_EMAIL']);
+    define('USERNAME_EMAIL', $configuration['USERNAME_EMAIL']);
+    define('PASSWORD_EMAIL', $configuration['PASSWORD_EMAIL']);
+    define('PORT_EMAIL', $configuration['PORT_EMAIL']);
+    define('SMTP_SECURE_EMAIL', $configuration['SMTP_SECURE_EMAIL']);
     define('KEY_AUTH', $configuration['KEY_AUTH']);
     define('BASE_URL_CREATIO', $configuration['BASE_URL_CREATIO']);
     define('USERNAME_CREATIO', $configuration['USERNAME_CREATIO']);

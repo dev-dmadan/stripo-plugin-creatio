@@ -43,6 +43,11 @@ $route = new \Klein\Klein();
         $controller->call('Home/getHtmlFull', null, true);
     });
 
+    // send test email
+    $route->respond('POST', '/send-test-email', function() use ($controller) {
+        $controller->call('TestEmail/index', null, true);
+    });
+
     // get auth to creatio
     $route->respond('POST', '/get-auth', function() use ($controller) {
         $controller->call('GetAuthCreatio/index', null, true);

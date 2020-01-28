@@ -1,6 +1,5 @@
 <?php Defined('BASE_PATH') or die(ACCESS_DENIED); ?>
 
-<div class="container">
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -13,15 +12,13 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <input type="email" class="form-control testing-email" id="email">
+                <input type="email" class="form-control testing-email" id="email" placeholder="input you email..">
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal" placeholder="input you email.."> Send </button>
+          <button id="send-email" type="button" class="btn btn-info"> Send </button>
         </div>
       </div>
       
     </div>
   </div>
-  
-</div>

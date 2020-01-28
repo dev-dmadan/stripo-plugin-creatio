@@ -6,6 +6,7 @@ const save = document.getElementById('save');
 const preview = document.getElementById('preview');
 const backPreview = document.getElementById('back-preview');
 const testEmail = document.getElementById('test-email');
+const sendEmail = document.getElementById('send-email');
 const controlPanel = document.getElementById('control-panel');
 
 loading();
@@ -19,6 +20,7 @@ window.onload = () => {
         preview.addEventListener('click', onClickPreview);
         backPreview.addEventListener('click', onClickBackPreview);
         testEmail.addEventListener('click', onClickTestEmail);
+        sendEmail.addEventListener('click', onClickSendEmail);
         controlPanel.addEventListener('click', onClickControlPanel);
     /** end on click button */
 
@@ -386,15 +388,73 @@ function getTokenStripo(callback) {
      * 
      */
     function onClickTestEmail() {
+        console.log('%c Test Email is clicked...', 'color: blue');
+
+        // Swal.fire({
+        //     icon: 'info',
+        //     title: 'Oops...',
+        //     text: 'Be patient, this feature still development :D'
+        // });
+
+        $('#myModal').modal();
+    }
+
+    /**
+     * 
+     */
+    async function onClickSendEmail() {
         console.log('%c Back Button is clicked...', 'color: blue');
+        
+        loading();
 
-        Swal.fire({
-            icon: 'info',
-            title: 'Oops...',
-            text: 'Be patient, this feature still development :D'
+        let to = document.querySelector('#email').value;
+        let html = await compileEmailStripo().then(response => {
+            return response.data.html;
         });
+        
+        fetch(`${SITE_URL}send-test-email`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${accessKey}`
+            },
+            body: JSON.stringify({
+                to: to,
+                templateName: document.querySelector('#templateName').value,
+                html: html
+            })
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            loading(false);
+            let messageSwal = {
+                icon: data.success ? 'success' : 'error',
+                title: data.success ? 'Yeah...' : 'Oops...',
+                text: data.success ? 'Your template has been sent, please check your email' : data.message
+            };
+            if(!data.success) {
+                messageSwal.footer = 'Please contact Our Team for information'
+            };
 
-        // $('#myModal').modal();
+            Swal.fire(messageSwal);
+            $('#myModal').modal('hide');
+            document.querySelector('body').removeAttribute('class');
+            document.querySelector('#email').value = '';
+        })
+        .catch(error => {
+            console.log(error);
+    
+            Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong',
+                text: error,
+                footer: 'Please contact Our Team for information'
+            });
+            loading(false);
+        });
     }
 
     /**
@@ -450,14 +510,19 @@ function animateCSS(element, animation, callback) {
  */
 function loading(show = true) {
     let content = document.getElementById('main-editor');
+    let preview = document.querySelector('.preview-email');
     let loading = document.getElementById('loader-wrapper');
     if(show) {
+        preview.classList.remove("show-loading");
+        preview.classList.add("show-loading");
+
         content.classList.remove("show-loading");
         content.classList.add("show-loading");
 
         loading.style.display = "block";
     }
     else {
+        preview.classList.remove("show-loading");
         content.classList.remove("show-loading");
         loading.style.display = "none";
     }
@@ -466,7 +531,7 @@ function loading(show = true) {
 function hideSettingContainerStripo() {
     controlPanel.classList.add("active");
     
-    document.querySelector('#stripoPreviewContainer').parentElement.removeAttribute('class');
+    document.querySelector('#stripoPreviewContainer').parentElement.removeAttribute('style');
     document.querySelector('#stripoSettingsContainer').parentElement.style.display = 'none';
 }
 

@@ -354,28 +354,6 @@ class Home extends Controller {
     /**
      * 
      */
-    private function requestError($errorCode, $message, $json = true) {
-        http_response_code($errorCode);
-        if($json) {
-            header("Content-Type: application/json");
-            header("Accept: application/json");
-            echo json_encode(array(
-                'success' => false,
-                'message' => $message
-            ), JSON_PRETTY_PRINT);
-
-            die();
-        }
-        
-        $this->view('error/error', array(
-            'error' => $errorCode,
-            'message' => $message
-        ));
-    }
-
-    /**
-     * 
-     */
     public function integration() {
         $this->creatio = new RequestCreatio('', '', '');
         $getData = $this->creatio->rest('GET', ['service' => 'IntegrationEmailTemplateData', 'method' => 'GetEmailTemplateStripo']);
