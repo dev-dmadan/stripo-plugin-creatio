@@ -355,14 +355,13 @@ class Home extends Controller {
      * 
      */
     public function integration() {
-        $this->creatio = new RequestCreatio('', '', '');
+        // $this->creatio = new RequestCreatio('', '', '');
         $getData = $this->creatio->rest('GET', ['service' => 'IntegrationEmailTemplateData', 'method' => 'GetEmailTemplateStripo']);
 
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
         header("Accept: application/json");
-        header("Access-Control-Allow-Methods: PUT");
-        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Methods: POST");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
         $i = 0;
